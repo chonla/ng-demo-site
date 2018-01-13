@@ -10,6 +10,8 @@ import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { AuthService } from './services/auth.service';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
 import { ErrorAlertComponent } from './components/error-alert/error-alert.component';
+import { DefaultLayoutComponent } from './components/default-layout/default-layout.component';
+import { AppChildRoutingModule } from './app-child-routing.module';
 
 
 @NgModule({
@@ -18,11 +20,13 @@ import { ErrorAlertComponent } from './components/error-alert/error-alert.compon
     LoginPageComponent,
     LoginBoxComponent,
     DashboardPageComponent,
-    ErrorAlertComponent
+    ErrorAlertComponent,
+    DefaultLayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AppChildRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],

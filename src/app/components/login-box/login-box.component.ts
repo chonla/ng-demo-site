@@ -31,7 +31,7 @@ export class LoginBoxComponent implements OnInit {
   onSubmit() {
     const formModel = this.loginForm.value;
     if (this.auth.login(formModel)) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/user']);
       return false;
     }
     this.error.show('ล็อกอินไม่สำเร็จ', 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');

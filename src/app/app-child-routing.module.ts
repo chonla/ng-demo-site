@@ -1,25 +1,31 @@
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { LoginPageComponent } from './components/login-page/login-page.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
+import { DefaultLayoutComponent } from './components/default-layout/default-layout.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },
-  {
-    path: 'login',
-    component: LoginPageComponent
+    path: 'user',
+    component: DefaultLayoutComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardPageComponent
+      }
+    ]
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
+    RouterModule.forChild(
       routes
     )
   ],
@@ -30,4 +36,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule { }
+export class AppChildRoutingModule { }
