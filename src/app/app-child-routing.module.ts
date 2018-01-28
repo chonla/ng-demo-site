@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
 import { DefaultLayoutComponent } from './components/default-layout/default-layout.component';
+import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardPageComponent
+      },
+      {
+        path: 'gallery',
+        component: GalleryPageComponent
       }
     ]
   }

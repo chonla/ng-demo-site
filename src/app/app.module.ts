@@ -13,6 +13,7 @@ import { ErrorAlertComponent } from './components/error-alert/error-alert.compon
 import { DefaultLayoutComponent } from './components/default-layout/default-layout.component';
 import { AppChildRoutingModule } from './app-child-routing.module';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     DashboardPageComponent,
     ErrorAlertComponent,
     DefaultLayoutComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    GalleryPageComponent
   ],
   imports: [
     BrowserModule,
