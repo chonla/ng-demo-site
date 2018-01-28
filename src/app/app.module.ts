@@ -14,7 +14,7 @@ import { DefaultLayoutComponent } from './components/default-layout/default-layo
 import { AppChildRoutingModule } from './app-child-routing.module';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
-import { SignOutComponent } from './components/sign-out/sign-out.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { SignOutComponent } from './components/sign-out/sign-out.component';
     DefaultLayoutComponent,
     SideMenuComponent,
     GalleryPageComponent,
-    SignOutComponent
+    LogoutButtonComponent
   ],
   imports: [
     BrowserModule,
