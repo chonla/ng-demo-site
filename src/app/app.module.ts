@@ -12,6 +12,7 @@ import { DashboardPageComponent } from './components/dashboard-page/dashboard-pa
 import { ErrorAlertComponent } from './components/error-alert/error-alert.component';
 import { DefaultLayoutComponent } from './components/default-layout/default-layout.component';
 import { AppChildRoutingModule } from './app-child-routing.module';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { AppChildRoutingModule } from './app-child-routing.module';
     LoginBoxComponent,
     DashboardPageComponent,
     ErrorAlertComponent,
-    DefaultLayoutComponent
+    DefaultLayoutComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
