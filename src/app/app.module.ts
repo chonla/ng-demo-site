@@ -14,6 +14,7 @@ import { DefaultLayoutComponent } from './components/default-layout/default-layo
 import { AppChildRoutingModule } from './app-child-routing.module';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
+import { SignOutComponent } from './components/sign-out/sign-out.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { GalleryPageComponent } from './components/gallery-page/gallery-page.com
     ErrorAlertComponent,
     DefaultLayoutComponent,
     SideMenuComponent,
-    GalleryPageComponent
+    GalleryPageComponent,
+    SignOutComponent
   ],
   imports: [
     BrowserModule,
