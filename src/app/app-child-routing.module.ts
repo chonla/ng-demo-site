@@ -5,6 +5,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
 import { DefaultLayoutComponent } from './components/default-layout/default-layout.component';
 import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -18,11 +19,13 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        component: DashboardPageComponent
+        component: DashboardPageComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'gallery',
-        component: GalleryPageComponent
+        component: GalleryPageComponent,
+        canActivate: [AuthGuardService]
       }
     ]
   }
@@ -35,7 +38,8 @@ const routes: Routes = [
     )
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    AuthGuardService
   ],
   exports: [
     RouterModule

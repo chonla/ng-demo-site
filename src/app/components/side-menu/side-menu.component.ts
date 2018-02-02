@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor() { }
+  currentUser;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.currentUser = this.auth.currentUser();
   }
 
 }
