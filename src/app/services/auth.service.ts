@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 import { FirebaseAuth } from '@firebase/auth-types';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,6 @@ export class AuthService {
     this.user.subscribe((user) => {
       if (user) {
         this.profile = user;
-        console.log(this.profile);
       }
     });
   }
@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   login(credential) {
-    return this.fireauth.auth.setPersistence('session').then(() => {
+    return this.fireauth.auth.setPersistence(environment.authen.persistence).then(() => {
       return this.fireauth.auth.signInWithEmailAndPassword(credential.username + '@demo-site.com', credential.password);
     });
   }

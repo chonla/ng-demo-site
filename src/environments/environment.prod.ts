@@ -4,5 +4,8 @@ export const environment = {
     apiKey: 'AIzaSyCU8V0G0wrCTxwQqDkoLJPQgshPIwQcc2I',
     authDomain: 'sweet-singer.firebaseapp.com',
     databaseURL: 'https://sweet-singer.firebaseaio.com'
+  },
+  authen: {
+    persistence: 'session'
   }
 };
