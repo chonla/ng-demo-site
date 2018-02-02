@@ -12,6 +12,7 @@ import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 export class LoginBoxComponent implements OnInit {
   @ViewChild('errorModal') error: ErrorAlertComponent;
   loginForm: FormGroup;
+  locked: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -29,15 +30,30 @@ export class LoginBoxComponent implements OnInit {
   }
 
   onSubmit() {
+    this.lock();
+    this.error.hide();
     const formModel = this.loginForm.value;
-    if (this.auth.login(formModel)) {
-      this.router.navigate(['/user']);
-      return false;
-    }
-    this.error.show('ล็อกอินไม่สำเร็จ', 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+    this.auth.login(formModel)
+      .then(() => {
+        this.router.navigate(['/user']);
+      })
+      .catch((e) => {
+        this.error.show('ล็อกอินไม่สำเร็จ', 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+        this.unlock();
+      });
+    return false;
   }
 
   ngOnInit() {
+    this.unlock();
+  }
+
+  lock() {
+    this.locked = true;
+  }
+
+  unlock() {
+    this.locked = false;
   }
 
 }

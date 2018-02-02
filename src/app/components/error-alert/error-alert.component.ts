@@ -35,8 +35,12 @@ export class ErrorAlertComponent implements OnInit {
     this.showed = true;
   }
 
-  closeModal() {
+  hide() {
     this.showed = false;
+  }
+
+  closeModal() {
+    this.hide();
   }
 
   ngOnInit() {

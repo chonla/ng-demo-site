@@ -15,6 +15,10 @@ import { AppChildRoutingModule } from './app-child-routing.module';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { GalleryCoverComponent } from './components/gallery-cover/gallery-cover.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -27,16 +31,21 @@ import { LogoutButtonComponent } from './components/logout-button/logout-button.
     DefaultLayoutComponent,
     SideMenuComponent,
     GalleryPageComponent,
-    LogoutButtonComponent
+    LogoutButtonComponent,
+    GalleryCoverComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AppChildRoutingModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
