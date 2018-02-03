@@ -1,33 +1,4 @@
 <div class="page-content">
   <div class="page-title">Gallery</div>
-  <div class="row">
-    <div class="col-md-4">
-      <app-gallery-cover></app-gallery-cover>
-    </div>
-    <div class="col-md-4">
-      <app-gallery-cover></app-gallery-cover>
-    </div>
-    <div class="col-md-4">
-      <app-gallery-cover></app-gallery-cover>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <app-gallery-cover></app-gallery-cover>
-    </div>
-    <div class="col-md-4">
-      <app-gallery-cover></app-gallery-cover>
-    </div>
-    <div class="col-md-4">
-      <app-gallery-cover></app-gallery-cover>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <app-gallery-cover></app-gallery-cover>
-    </div>
-    <div class="col-md-4">
-      <app-gallery-cover></app-gallery-cover>
-    </div>
-  </div>
+  <app-gallery-list appResource="/assets/data/gallery.json" (dataEmitter)="dataReceiver($event)" [galleryData]="galleryData"></app-gallery-list>
 </div>

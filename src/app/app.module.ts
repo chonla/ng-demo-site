@@ -19,6 +19,9 @@ import { GalleryCoverComponent } from './components/gallery-cover/gallery-cover.
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import { GalleryListComponent } from './components/gallery-list/gallery-list.component';
+import { ResourceDirective } from './directives/resource.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -32,7 +35,9 @@ import { environment } from '../environments/environment';
     SideMenuComponent,
     GalleryPageComponent,
     LogoutButtonComponent,
-    GalleryCoverComponent
+    GalleryCoverComponent,
+    GalleryListComponent,
+    ResourceDirective
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ import { environment } from '../environments/environment';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [
     AuthService

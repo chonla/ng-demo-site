@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GalleryPageComponent implements OnInit {
 
+  public galleryData;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  dataReceiver($event) {
+    this.galleryData = $event;
   }
 
 }
