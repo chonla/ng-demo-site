@@ -1,0 +1,4 @@
+<div class="page-content">
+  <div class="page-title">Posts</div>
+  <app-posts-list appResource="/assets/data/posts.json" (dataEmitter)="dataReceiver($event)" [postsData]="postsData"></app-posts-list>
+</div>

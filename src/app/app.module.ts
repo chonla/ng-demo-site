@@ -22,6 +22,8 @@ import { environment } from '../environments/environment';
 import { GalleryListComponent } from './components/gallery-list/gallery-list.component';
 import { ResourceDirective } from './directives/resource.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { PostsPageComponent } from './components/posts-page/posts-page.component';
+import { PostsListComponent } from './components/posts-list/posts-list.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { HttpClientModule } from '@angular/common/http';
     LogoutButtonComponent,
     GalleryCoverComponent,
     GalleryListComponent,
-    ResourceDirective
+    ResourceDirective,
+    PostsPageComponent,
+    PostsListComponent
   ],
   imports: [
     BrowserModule,

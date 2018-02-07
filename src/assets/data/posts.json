@@ -1,0 +1,22 @@
+[{
+    "id": 1,
+    "title": "Test Post 1",
+    "author": "admin",
+    "created_date": "2018-01-18T20:00:00Z",
+    "body": "Test Test TEst"
+  },
+  {
+    "id": 1,
+    "title": "Test Post 2",
+    "author": "admin",
+    "created_date": "2018-01-18T20:00:00Z",
+    "body": "Test Test TEst 2"
+  },
+  {
+    "id": 1,
+    "title": "Test Post 3",
+    "author": "admin",
+    "created_date": "2018-01-18T20:00:00Z",
+    "body": "Test Test TEst 3"
+  }
+]

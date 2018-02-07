@@ -6,6 +6,7 @@ import { DashboardPageComponent } from './components/dashboard-page/dashboard-pa
 import { DefaultLayoutComponent } from './components/default-layout/default-layout.component';
 import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { PostsPageComponent } from './components/posts-page/posts-page.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,11 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardPageComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'posts',
+        component: PostsPageComponent,
         canActivate: [AuthGuardService]
       },
       {

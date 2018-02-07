@@ -15,7 +15,7 @@ export class GalleryPageComponent implements OnInit {
   }
 
   dataReceiver($event) {
-    this.galleryData = $event;
+    this.galleryData = $event.data;
   }
 
 }
