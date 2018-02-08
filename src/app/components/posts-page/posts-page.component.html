@@ -1,4 +1,11 @@
 <div class="page-content">
-  <div class="page-title">Posts</div>
-  <app-posts-list appResource="/assets/data/posts.json" (dataEmitter)="dataReceiver($event)" [postsData]="postsData"></app-posts-list>
+  <div class="row">
+    <div class="page-title">โพสต์</div>
+  </div>
+  <div class="row">
+    <button type="button" routerLink="/user/create-post" class="btn btn-primary">
+      <i class="fa fa-plus-circle fw"></i> สร้างใหม่
+    </button>
+  </div>
+  <app-posts-list appFirebaseResource="posts" (dataEmitter)="dataReceiver($event)" [postsData]="postsData"></app-posts-list>
 </div>

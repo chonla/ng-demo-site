@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ResourceDirective } from '../../directives/resource.directive';
+import { FirebaseResourceDirective } from '../../directives/firebase-resource.directive';
 
 @Component({
   selector: 'app-posts-list',

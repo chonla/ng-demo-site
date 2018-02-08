@@ -1,5 +1,24 @@
-<table>
-  <tr *ngFor="let post of postsData">
-    <td>{{ post.title }}</td>
-  </tr>
+<table class="table mt-2">
+  <thead>
+    <tr class="row">
+      <th scope="col" class="col-1 text-center">
+        <input type="checkbox">
+      </th>
+      <th scope="col" class="col-6">หัวข้อ</th>
+      <th scope="col" class="col-2 text-center">ผู้เขียน</th>
+      <th scope="col" class="col-1 text-center">สถานะ</th>
+      <th scope="col" class="col-2 text-center">วันที่</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of postsData | orderBy: ['-created_date']" class="row">
+      <td class="col-1 text-center">
+        <input type="checkbox">
+      </td>
+      <td class="col-6 post-title">{{ post.title }}</td>
+      <td class="col-2 text-center">{{ post.author }}</td>
+      <td class="col-1 text-center">{{ post.status }}</td>
+      <td class="col-2 text-center">{{ post.created_date | date }}</td>
+    </tr>
+  </tbody>
 </table>

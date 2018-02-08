@@ -3,20 +3,39 @@
     "title": "Test Post 1",
     "author": "admin",
     "created_date": "2018-01-18T20:00:00Z",
-    "body": "Test Test TEst"
+    "body": "Test Test TEst",
+    "status": "published"
   },
   {
-    "id": 1,
+    "id": 2,
     "title": "Test Post 2",
     "author": "admin",
     "created_date": "2018-01-18T20:00:00Z",
-    "body": "Test Test TEst 2"
+    "body": "Test Test TEst 2",
+    "status": "published"
   },
   {
-    "id": 1,
+    "id": 3,
     "title": "Test Post 3",
     "author": "admin",
-    "created_date": "2018-01-18T20:00:00Z",
-    "body": "Test Test TEst 3"
+    "created_date": "2018-01-19T20:00:00Z",
+    "body": "Test Test TEst 3",
+    "status": "draft"
+  },
+  {
+    "id": 4,
+    "title": "Test Post 4",
+    "author": "admin",
+    "created_date": "2018-01-20T20:00:00Z",
+    "body": "Test Test TEst 4",
+    "status": "published"
+  },
+  {
+    "id": 5,
+    "title": "Test Post 5",
+    "author": "admin",
+    "created_date": "2018-01-20T20:00:00Z",
+    "body": "Test Test TEst 5",
+    "status": "draft"
   }
 ]

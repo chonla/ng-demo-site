@@ -24,6 +24,12 @@ import { ResourceDirective } from './directives/resource.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { PostsPageComponent } from './components/posts-page/posts-page.component';
 import { PostsListComponent } from './components/posts-list/posts-list.component';
+import { FirebaseResourceDirective } from './directives/firebase-resource.directive';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { OrderByPipe } from './pipes/order-by.pipe';
+import { CreatePostPageComponent } from './components/create-post-page/create-post-page.component';
+import { TextEditorComponent } from './components/text-editor/text-editor.component';
+import { TextEditorDirective } from './directives/text-editor.directive';
 
 
 @NgModule({
@@ -41,7 +47,12 @@ import { PostsListComponent } from './components/posts-list/posts-list.component
     GalleryListComponent,
     ResourceDirective,
     PostsPageComponent,
-    PostsListComponent
+    PostsListComponent,
+    FirebaseResourceDirective,
+    OrderByPipe,
+    CreatePostPageComponent,
+    TextEditorComponent,
+    TextEditorDirective
   ],
   imports: [
     BrowserModule,
@@ -51,6 +62,7 @@ import { PostsListComponent } from './components/posts-list/posts-list.component
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFirestoreModule,
     HttpClientModule
   ],
   providers: [

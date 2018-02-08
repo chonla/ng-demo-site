@@ -7,6 +7,7 @@ import { DefaultLayoutComponent } from './components/default-layout/default-layo
 import { GalleryPageComponent } from './components/gallery-page/gallery-page.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { PostsPageComponent } from './components/posts-page/posts-page.component';
+import { CreatePostPageComponent } from './components/create-post-page/create-post-page.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
       {
         path: 'posts',
         component: PostsPageComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'create-post',
+        component: CreatePostPageComponent,
         canActivate: [AuthGuardService]
       },
       {
