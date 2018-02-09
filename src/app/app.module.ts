@@ -29,6 +29,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { CreatePostPageComponent } from './components/create-post-page/create-post-page.component';
 import { QuillModule } from 'ngx-quill';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { QuillModule } from 'ngx-quill';
     QuillModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

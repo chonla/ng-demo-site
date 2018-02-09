@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { DataService } from '../../services/data.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-create-post-page',
@@ -10,7 +12,7 @@ export class CreatePostPageComponent implements OnInit {
 
   public postForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private data: DataService, private auth: AuthService) {
     this.initializeForm();
   }
 
@@ -25,7 +27,13 @@ export class CreatePostPageComponent implements OnInit {
   }
 
   savePost() {
-    console.log(this.postForm.controls);
+    this.data.save('posts', {
+      title: this.postForm.controls.title.value,
+      body: this.postForm.controls.body.value,
+      created_date: (new Date()).toISOString(),
+      author: this.auth.currentUser(),
+      status: 'published'
+    });
   }
 
 }
