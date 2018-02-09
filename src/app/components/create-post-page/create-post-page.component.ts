@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-create-post-page',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatePostPageComponent implements OnInit {
 
-  constructor() { }
+  public postForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.initializeForm();
+  }
 
   ngOnInit() {
+  }
+
+  initializeForm() {
+    this.postForm = this.fb.group({
+      title: '',
+      body: ''
+    });
+  }
+
+  savePost() {
+    console.log(this.postForm.controls);
   }
 
 }

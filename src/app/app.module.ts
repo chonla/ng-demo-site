@@ -28,9 +28,7 @@ import { FirebaseResourceDirective } from './directives/firebase-resource.direct
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { OrderByPipe } from './pipes/order-by.pipe';
 import { CreatePostPageComponent } from './components/create-post-page/create-post-page.component';
-import { TextEditorComponent } from './components/text-editor/text-editor.component';
-import { TextEditorDirective } from './directives/text-editor.directive';
-
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -50,9 +48,7 @@ import { TextEditorDirective } from './directives/text-editor.directive';
     PostsListComponent,
     FirebaseResourceDirective,
     OrderByPipe,
-    CreatePostPageComponent,
-    TextEditorComponent,
-    TextEditorDirective
+    CreatePostPageComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +59,8 @@ import { TextEditorDirective } from './directives/text-editor.directive';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    HttpClientModule
+    HttpClientModule,
+    QuillModule
   ],
   providers: [
     AuthService

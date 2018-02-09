@@ -1,8 +1,26 @@
 <div class="page-content">
   <div class="row">
-    <div class="page-title">สร้างโพสต์</div>
+    <div class="page-title">สร้างบทความ</div>
   </div>
-  <div class="row">
-    <app-text-editor></app-text-editor>
-  </div>
+  <form [formGroup]="postForm" novalidate>
+    <div class="row">
+      <div class="col-9">
+        <div class="row">
+          <input type="text" class="form-control" formControlName="title" placeholder="ใส่ชื่อหัวข้อที่นี่">
+        </div>
+        <div class="row mt-2 text-editor-container">
+          <quill-editor [placeholder]="'ใส่ข้อความที่นี่'" formControlName="body"></quill-editor>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card">
+          <div class="card-body">
+            <button class="btn btn-primary" type="submit" (click)="savePost()">
+              <i class="fa fa-cloud fw"></i> เผยแพร่
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

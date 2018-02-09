@@ -37,3 +37,15 @@ body {
   width: 100%;
   height: auto;
 }
+
+/* Colors override */
+
+.btn-primary {
+  background-color: #005B87;
+  border-color: #004668;
+}
+
+.btn-primary:hover {
+  background-color: #004668;
+  border-color: #001B28;
+}

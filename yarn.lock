@@ -289,6 +289,10 @@
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.32.tgz#bd284e57c84f1325da702babfc82a5328190c0c5"
 
+"@types/quill@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@types/quill/-/quill-1.3.3.tgz#06e08fb017d9493e3708c5c13fbb8bf33ad03d9e"
+
 "@types/selenium-webdriver@^2.53.35", "@types/selenium-webdriver@~2.53.39":
   version "2.53.43"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.43.tgz#2de3d718819bc20165754c4a59afb7e9833f6707"
@@ -4625,6 +4629,13 @@ negotiator@0.6.1:
 netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
+
+ngx-quill@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ngx-quill/-/ngx-quill-2.1.1.tgz#f3dedc1ea4e1d3b05a97ed2acb921b205e6d6c3a"
+  dependencies:
+    "@types/quill" "1.3.3"
+    quill "^1.3.5"
 
 no-case@^2.2.0:
   version "2.3.2"
