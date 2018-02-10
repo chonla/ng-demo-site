@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class CreatePostPageComponent implements OnInit {
 
+  @ViewChild('successAlert') successAlert;
   public postForm: FormGroup;
 
   constructor(private fb: FormBuilder, private data: DataService, private auth: AuthService) {
@@ -39,6 +40,7 @@ export class CreatePostPageComponent implements OnInit {
 
     obs.subscribe(doc => {
       this.postForm.patchValue({ id: doc.id });
+      this.successAlert.show();
     });
   }
 
@@ -49,6 +51,7 @@ export class CreatePostPageComponent implements OnInit {
 
     obs.subscribe(doc => {
       this.postForm.patchValue({ id: doc.id });
+      this.successAlert.show();
     });
   }
 }

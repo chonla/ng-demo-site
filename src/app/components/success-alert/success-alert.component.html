@@ -1,0 +1,8 @@
+<div class="row" *ngIf="shown">
+  <div class="alert alert-success alert-dismissible fade show col-12" role="alert" #alertBox>
+    <button type="button" class="close" aria-label="Close" (click)="hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>ยอดเยี่ยมไปเลย!</strong> บทความของคุณถูกบันทึกไว้เรียบร้อยแล้ว
+  </div>
+</div>

@@ -31,6 +31,7 @@ import { CreatePostPageComponent } from './components/create-post-page/create-po
 import { QuillModule } from 'ngx-quill';
 import { DataService } from './services/data.service';
 import { DashIfEmptyPipe } from './pipes/dash-if-empty.pipe';
+import { SuccessAlertComponent } from './components/success-alert/success-alert.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DashIfEmptyPipe } from './pipes/dash-if-empty.pipe';
     FirebaseResourceDirective,
     OrderByPipe,
     CreatePostPageComponent,
-    DashIfEmptyPipe
+    DashIfEmptyPipe,
+    SuccessAlertComponent
   ],
   imports: [
     BrowserModule,
