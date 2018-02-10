@@ -30,6 +30,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { CreatePostPageComponent } from './components/create-post-page/create-post-page.component';
 import { QuillModule } from 'ngx-quill';
 import { DataService } from './services/data.service';
+import { DashIfEmptyPipe } from './pipes/dash-if-empty.pipe';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DataService } from './services/data.service';
     PostsListComponent,
     FirebaseResourceDirective,
     OrderByPipe,
-    CreatePostPageComponent
+    CreatePostPageComponent,
+    DashIfEmptyPipe
   ],
   imports: [
     BrowserModule,
