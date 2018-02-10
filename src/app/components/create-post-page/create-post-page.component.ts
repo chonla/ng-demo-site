@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-create-post-page',
@@ -21,19 +22,33 @@ export class CreatePostPageComponent implements OnInit {
 
   initializeForm() {
     this.postForm = this.fb.group({
+      id: '',
       title: '',
-      body: ''
+      body: '',
+      created_timestamp: '',
+      updated_timestamp: '',
+      author: this.auth.currentUser(),
+      status: ''
     });
   }
 
   savePost() {
-    this.data.save('posts', {
-      title: this.postForm.controls.title.value,
-      body: this.postForm.controls.body.value,
-      created_date: (new Date()).toISOString(),
-      author: this.auth.currentUser(),
-      status: 'published'
+    this.postForm.patchValue({ status: 'published' });
+    const post = this.postForm.value;
+    const obs = this.data.save('posts', post);
+
+    obs.subscribe(doc => {
+      this.postForm.patchValue({ id: doc.id });
     });
   }
 
+  saveDraft() {
+    this.postForm.patchValue({ status: 'draft' });
+    const post = this.postForm.value;
+    const obs = this.data.save('posts', post);
+
+    obs.subscribe(doc => {
+      this.postForm.patchValue({ id: doc.id });
+    });
+  }
 }

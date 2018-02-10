@@ -11,14 +11,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let post of postsData | orderBy: ['-created_date']" class="row">
+    <tr *ngFor="let post of postsData | orderBy: ['-created_timestamp']" class="row">
       <td class="col-1 text-center">
         <input type="checkbox">
       </td>
       <td class="col-6 post-title">{{ post.title }}</td>
       <td class="col-2 text-center">{{ post.author }}</td>
       <td class="col-1 text-center">{{ post.status }}</td>
-      <td class="col-2 text-center">{{ post.created_date | date }}</td>
+      <td class="col-2 text-center">{{ post.created_timestamp | date }}</td>
     </tr>
   </tbody>
 </table>

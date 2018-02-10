@@ -15,7 +15,13 @@
       <div class="col-3">
         <div class="card">
           <div class="card-body">
-            <button class="btn btn-primary" type="submit" (click)="savePost()">
+            <label>สถานะ:</label> {{ postForm.controls['status'].value }}
+          </div>
+          <div class="card-body">
+            <button class="btn btn-secondary" type="submit" (click)="saveDraft()">
+              <i class="fa fa-pencil fw"></i> ร่าง
+            </button>
+            <button class="btn btn-primary float-right" type="submit" (click)="savePost()">
               <i class="fa fa-cloud fw"></i> เผยแพร่
             </button>
           </div>
