@@ -32,6 +32,8 @@ import { QuillModule } from 'ngx-quill';
 import { DataService } from './services/data.service';
 import { DashIfEmptyPipe } from './pipes/dash-if-empty.pipe';
 import { SuccessAlertComponent } from './components/success-alert/success-alert.component';
+import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { SuccessAlertComponent } from './components/success-alert/success-alert.
     OrderByPipe,
     CreatePostPageComponent,
     DashIfEmptyPipe,
-    SuccessAlertComponent
+    SuccessAlertComponent,
+    LoadingModalComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { SuccessAlertComponent } from './components/success-alert/success-alert.
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpClientModule,
-    QuillModule
+    QuillModule,
+    ModalModule.forRoot()
   ],
   providers: [
     AuthService,

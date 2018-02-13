@@ -12,10 +12,14 @@ import { Subscription } from 'rxjs/Subscription';
 export class CreatePostPageComponent implements OnInit {
 
   @ViewChild('successAlert') successAlert;
+  @ViewChild('loadingModal') loadingModal;
   public postForm: FormGroup;
+  public isSaving: boolean;
+  public saving$: Subscription;
 
   constructor(private fb: FormBuilder, private data: DataService, private auth: AuthService) {
     this.initializeForm();
+    this.isSaving = false;
   }
 
   ngOnInit() {
@@ -33,25 +37,27 @@ export class CreatePostPageComponent implements OnInit {
     });
   }
 
-  savePost() {
-    this.postForm.patchValue({ status: 'published' });
-    const post = this.postForm.value;
-    const obs = this.data.save('posts', post);
-
-    obs.subscribe(doc => {
-      this.postForm.patchValue({ id: doc.id });
-      this.successAlert.show();
-    });
+  publishPost() {
+    this.savePost('published');
   }
 
   saveDraft() {
-    this.postForm.patchValue({ status: 'draft' });
+    this.savePost('draft');
+  }
+
+  savePost(status) {
+    this.loadingModal.show('กำลังบันทึก...');
+    this.isSaving = true;
+    this.postForm.patchValue({ status: status });
     const post = this.postForm.value;
     const obs = this.data.save('posts', post);
 
-    obs.subscribe(doc => {
+    this.saving$ = obs.subscribe(doc => {
       this.postForm.patchValue({ id: doc.id });
       this.successAlert.show();
+      this.isSaving = false;
+      this.saving$.unsubscribe();
+      this.loadingModal.hide();
     });
   }
 }

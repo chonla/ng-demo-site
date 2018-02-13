@@ -4630,6 +4630,10 @@ netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
+ngx-bootstrap@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.2.tgz#6862b2ee4764bb6cfd34c66528873d0d050c2faa"
+
 ngx-quill@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ngx-quill/-/ngx-quill-2.1.1.tgz#f3dedc1ea4e1d3b05a97ed2acb921b205e6d6c3a"
