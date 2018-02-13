@@ -1,4 +1,4 @@
-<table class="table mt-2">
+<table class="table table-hover mt-2">
   <thead>
     <tr class="row">
       <th scope="col" class="col-1 text-center">
@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let post of postsData | orderBy: ['-created_timestamp']" class="row">
+    <tr *ngFor="let post of postsData | orderBy: ['-created_timestamp']" class="row clickable" (click)="edit(post)">
       <td class="col-1 text-center">
         <input type="checkbox">
       </td>

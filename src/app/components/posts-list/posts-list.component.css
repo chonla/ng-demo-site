@@ -5,3 +5,7 @@
 th {
   font-weight: normal;
 }
+
+.clickable {
+  cursor: pointer;
+}

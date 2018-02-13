@@ -54,7 +54,7 @@ export class CreatePostPageComponent implements OnInit {
 
     this.saving$ = obs.subscribe(doc => {
       this.saving$.unsubscribe();
-      this.postForm.patchValue({ id: doc.id });
+      this.postForm.setValue(post);
       this.successAlert.show();
       this.isSaving = false;
       this.loadingModal.hide();

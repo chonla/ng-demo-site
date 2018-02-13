@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ResourceDirective implements OnInit, OnDestroy {
 
+  // tslint:disable-next-line:no-input-rename
   @Input('appResource') resource: string;
   @Output() dataEmitter: EventEmitter<any>;
   private dataObservable: Observable<object>;

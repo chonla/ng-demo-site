@@ -19,16 +19,16 @@ export class DataService {
     return this.update(to, obj.id, obj);
   }
 
-  private add(to, obj): Observable<{}> {
+  private add(to, obj): Observable<void> {
+    const docId = this.db.createId();
     const col = this.db.collection(to);
-    return Observable.fromPromise(col.add(obj));
+    obj['id'] = docId;
+    return Observable.fromPromise(col.doc(docId).set(obj));
   }
 
-  private update(to, key, obj): Observable<{}> {
-    const doc = this.db.doc(to + '/' + key);
-    const item = doc.valueChanges();
-    doc.update(obj);
-    return item;
+  private update(to, key, obj): Observable<void> {
+    const col = this.db.collection(to);
+    return Observable.fromPromise(col.doc(key).set(obj));
   }
 
 }

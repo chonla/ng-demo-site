@@ -15,4 +15,8 @@ export class PostsListComponent implements OnInit {
   ngOnInit() {
   }
 
+  edit(post) {
+    console.log(this.postsData);
+  }
+
 }

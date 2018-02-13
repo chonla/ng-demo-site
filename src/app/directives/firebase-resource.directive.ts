@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class FirebaseResourceDirective implements OnInit, OnDestroy {
 
+  // tslint:disable-next-line:no-input-rename
   @Input('appFirebaseResource') resource: string;
   @Output() dataEmitter: EventEmitter<any>;
   private dataSubscription$: Subscription;
