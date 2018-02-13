@@ -53,10 +53,10 @@ export class CreatePostPageComponent implements OnInit {
     const obs = this.data.save('posts', post);
 
     this.saving$ = obs.subscribe(doc => {
+      this.saving$.unsubscribe();
       this.postForm.patchValue({ id: doc.id });
       this.successAlert.show();
       this.isSaving = false;
-      this.saving$.unsubscribe();
       this.loadingModal.hide();
     });
   }
