@@ -18,7 +18,7 @@
           <div class="card-body">
             <label>สถานะ:</label> {{ postForm.controls['status'].value | dashIfEmpty }}
             <br>
-            <label>บันทึกเมื่อ:</label> {{ postForm.controls['updated_timestamp'].value | dashIfEmpty }}
+            <label>บันทึกเมื่อ:</label> {{ postForm.controls['updated_timestamp'].value | thDate: 'd MMM tttt' | dashIfEmpty }}
             <hr>
             <button class="btn btn-secondary" type="submit" (click)="saveDraft()" [disabled]="isSaving">
               <i class="fa fa-pencil fw"></i> ร่าง

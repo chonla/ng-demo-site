@@ -34,6 +34,7 @@ import { DashIfEmptyPipe } from './pipes/dash-if-empty.pipe';
 import { SuccessAlertComponent } from './components/success-alert/success-alert.component';
 import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ThDatePipe } from './pipes/th-date.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CreatePostPageComponent,
     DashIfEmptyPipe,
     SuccessAlertComponent,
-    LoadingModalComponent
+    LoadingModalComponent,
+    ThDatePipe
   ],
   imports: [
     BrowserModule,
