@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, Input } from '@angular/core';
 import { BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
@@ -10,21 +10,15 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 export class LoadingModalComponent implements OnInit {
 
   @ViewChild('loadingModal') loadingModal: TemplateRef<any>;
-  public loadingMessage;
+  @Input('message') message;
   public modalRef: BsModalRef;
 
-  constructor(private modalService: BsModalService) {
-    this.loadingMessage = 'กำลังโหลด...';
-  }
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
   }
 
-  show(msg) {
-    if (msg) {
-      this.loadingMessage = msg;
-    }
-
+  show() {
     const options: ModalOptions = {
       animated: true,
       backdrop: true,

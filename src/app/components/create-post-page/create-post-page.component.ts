@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
@@ -16,26 +16,38 @@ export class CreatePostPageComponent implements OnInit {
 
   @ViewChild('successAlert') successAlert;
   @ViewChild('loadingModal') loadingModal;
+  @ViewChild('savingModal') savingModal;
   public postForm: FormGroup;
   public isSaving: boolean;
   public saving$: Subscription;
   public post$: Observable<{}>;
 
-  constructor(private fb: FormBuilder, private data: DataService, private auth: AuthService, private route: ActivatedRoute) {
+  constructor(
+    private fb: FormBuilder,
+    private data: DataService,
+    private auth: AuthService,
+    private route: ActivatedRoute,
+    private changeDetector: ChangeDetectorRef) {
     this.initializeForm();
     this.isSaving = false;
   }
 
   ngOnInit() {
-    const postId = this.route.snapshot.paramMap.get('id');
-    if (postId !== '') {
-      const obs = this.data.get('posts', postId);
-      const post$ = obs.subscribe(
-        doc => this.postForm.setValue(doc),
-        e => this.showError(e),
-        () => post$.unsubscribe()
-      );
-    }
+    setTimeout(_ => {
+      const postId = this.route.snapshot.paramMap.get('id');
+      if (postId !== '') {
+        this.changeDetector.detectChanges();
+        this.loadingModal.show();
+        const obs = this.data.get('posts', postId);
+        const post$ = obs.subscribe(
+          doc => {
+            post$.unsubscribe();
+            this.postForm.setValue(doc);
+            this.loadingModal.hide();
+          }
+        );
+      }
+    });
   }
 
   initializeForm() {
@@ -59,7 +71,7 @@ export class CreatePostPageComponent implements OnInit {
   }
 
   savePost(status) {
-    this.loadingModal.show('กำลังบันทึก...');
+    this.savingModal.show('กำลังบันทึก...');
     this.isSaving = true;
     this.postForm.patchValue({ status: status });
     const post = this.postForm.value;
@@ -70,11 +82,7 @@ export class CreatePostPageComponent implements OnInit {
       this.postForm.setValue(post);
       this.successAlert.show();
       this.isSaving = false;
-      this.loadingModal.hide();
+      this.savingModal.hide();
     });
-  }
-
-  showError(e) {
-    console.log(e);
   }
 }
