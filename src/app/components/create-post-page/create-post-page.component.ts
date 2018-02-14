@@ -3,6 +3,9 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs/Subscription';
+import { ParamMap, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-create-post-page',
@@ -16,13 +19,23 @@ export class CreatePostPageComponent implements OnInit {
   public postForm: FormGroup;
   public isSaving: boolean;
   public saving$: Subscription;
+  public post$: Observable<{}>;
 
-  constructor(private fb: FormBuilder, private data: DataService, private auth: AuthService) {
+  constructor(private fb: FormBuilder, private data: DataService, private auth: AuthService, private route: ActivatedRoute) {
     this.initializeForm();
     this.isSaving = false;
   }
 
   ngOnInit() {
+    const postId = this.route.snapshot.paramMap.get('id');
+    if (postId !== '') {
+      const obs = this.data.get('posts', postId);
+      const post$ = obs.subscribe(
+        doc => this.postForm.setValue(doc),
+        e => this.showError(e),
+        () => post$.unsubscribe()
+      );
+    }
   }
 
   initializeForm() {
@@ -59,5 +72,9 @@ export class CreatePostPageComponent implements OnInit {
       this.isSaving = false;
       this.loadingModal.hide();
     });
+  }
+
+  showError(e) {
+    console.log(e);
   }
 }

@@ -9,3 +9,7 @@ th {
 .clickable {
   cursor: pointer;
 }
+
+.post-action {
+  font-weight: normal;
+}
