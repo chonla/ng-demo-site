@@ -12,7 +12,6 @@ export class ThDatePipe implements PipeTransform {
       return '';
     }
     registerLocaleData(localeTh, 'th', localeThExtra);
-    format = 'd MMMM GG tttt';
 
     const datePipe = new DatePipe('th');
     const buddhistEraYear = (parseInt(datePipe.transform(value, 'yyyy', timezone), 10) + 543).toString();
