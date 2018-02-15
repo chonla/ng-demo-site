@@ -1,0 +1,13 @@
+<tr class="row post-row" (mousemove)="showMenu()" (mouseout)="hideMenu()">
+  <td class="col-1 text-center">
+    <input type="checkbox">
+  </td>
+  <td class="col-6 post-title">{{ post.title }}
+    <div class="post-action" [hidden]="menuOff">
+      <a href="#" (click)="edit()">แก้ไข</a>
+    </div>
+  </td>
+  <td class="col-2 text-center">{{ post.author }}</td>
+  <td class="col-1 text-center">{{ post.status }}</td>
+  <td class="col-2 text-center">{{ post.created_timestamp | thDate : 'd MMM tttt' }}</td>
+</tr>

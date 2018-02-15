@@ -11,19 +11,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let post of postsData | orderBy: ['-created_timestamp']" class="row">
-      <td class="col-1 text-center">
-        <input type="checkbox">
-      </td>
-      <td class="col-6 post-title">{{ post.title }}
-        <br>
-        <div class="post-action">
-          <a href="#" (click)="edit(post)">แก้ไข</a>
-        </div>
-      </td>
-      <td class="col-2 text-center">{{ post.author }}</td>
-      <td class="col-1 text-center">{{ post.status }}</td>
-      <td class="col-2 text-center">{{ post.created_timestamp | thDate : 'd MMM tttt' }}</td>
-    </tr>
+    <app-post-row *ngFor="let post of postsData | orderBy: ['-created_timestamp']" [post]="post"></app-post-row>
   </tbody>
 </table>
