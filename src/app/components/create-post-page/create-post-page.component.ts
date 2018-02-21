@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-create-post-page',
@@ -21,6 +22,7 @@ export class CreatePostPageComponent implements OnInit {
   public isSaving: boolean;
   public saving$: Subscription;
   public post$: Observable<{}>;
+  public env = environment;
 
   constructor(
     private fb: FormBuilder,
@@ -55,6 +57,7 @@ export class CreatePostPageComponent implements OnInit {
       id: '',
       title: '',
       body: '',
+      slug: '',
       created_timestamp: '',
       updated_timestamp: '',
       author: this.auth.currentUser(),
@@ -85,5 +88,14 @@ export class CreatePostPageComponent implements OnInit {
       this.isSaving = false;
       this.savingModal.hide();
     });
+  }
+
+  autoCreateSlug() {
+    const title = this.postForm.value.title;
+    let slug = this.postForm.value.slug;
+    if (slug === '') {
+      slug = title.replace(/[\s\[\]\<\>;:!#?\/\\+\{\}\|\"'=]/ig, "_");;
+      this.postForm.patchValue({ slug: slug });
+    }
   }
 }
