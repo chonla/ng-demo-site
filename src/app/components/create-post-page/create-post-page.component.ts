@@ -35,7 +35,7 @@ export class CreatePostPageComponent implements OnInit {
   ngOnInit() {
     setTimeout(_ => {
       const postId = this.route.snapshot.paramMap.get('id');
-      if (postId !== '') {
+      if (postId !== null && postId !== '') {
         this.changeDetector.detectChanges();
         this.loadingModal.show();
         const obs = this.data.get('posts', postId);
@@ -70,9 +70,10 @@ export class CreatePostPageComponent implements OnInit {
     this.savePost('draft');
   }
 
-  savePost(status) {
+  savePost(status: string) {
     this.savingModal.show('กำลังบันทึก...');
     this.isSaving = true;
+
     this.postForm.patchValue({ status: status });
     const post = this.postForm.value;
     const obs = this.data.save('posts', post);
