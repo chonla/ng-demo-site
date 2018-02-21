@@ -25,7 +25,7 @@ export class ErrorAlertComponent implements OnInit {
 
   title;
   message;
-  private showed = false;
+  public showed = false;
 
   constructor() { }
 

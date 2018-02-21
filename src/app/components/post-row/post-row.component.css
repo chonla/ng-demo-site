@@ -1,3 +1,23 @@
 .post-row {
   min-height: 64px;
 }
+
+.trash {
+  color: #a00;
+}
+
+.post-action ul {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.post-action ul li {
+  float: left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.post-action ul li:first-child {
+  padding-left: 0px;
+}

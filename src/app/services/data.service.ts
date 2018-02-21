@@ -36,4 +36,9 @@ export class DataService {
     return doc.valueChanges();
   }
 
+  public remove(from, key): Observable<void> {
+    const col = this.db.collection(from);
+    return Observable.fromPromise(col.doc(key).delete());
+  }
+
 }

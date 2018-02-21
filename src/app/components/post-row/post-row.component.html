@@ -4,8 +4,16 @@
   </td>
   <td class="col-6 post-title">{{ post.title }}
     <div class="post-action" [hidden]="menuOff">
-      <a href="#" (click)="edit()">แก้ไข</a>
+      <ul>
+        <li>
+          <a href="#" (click)="edit()">แก้ไข</a>
+        </li>
+        <li>
+          <a href="#" (click)="trash()" class="trash">ย้ายไปถังขยะ</a>
+        </li>
+      </ul>
     </div>
+    <app-confirm-modal #confirmModal message="ยืนยันการลบโพสต์"></app-confirm-modal>
   </td>
   <td class="col-2 text-center">{{ post.author }}</td>
   <td class="col-1 text-center">{{ post.status }}</td>

@@ -36,6 +36,7 @@ import { LoadingModalComponent } from './components/loading-modal/loading-modal.
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ThDatePipe } from './pipes/th-date.pipe';
 import { PostRowComponent } from './components/post-row/post-row.component';
+import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { PostRowComponent } from './components/post-row/post-row.component';
     SuccessAlertComponent,
     LoadingModalComponent,
     ThDatePipe,
-    PostRowComponent
+    PostRowComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
