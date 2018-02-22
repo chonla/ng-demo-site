@@ -14,7 +14,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text">{{ env.slugBase }}</div>
             </div>
-            <input type="text" class="form-control" formControlName="slug" placeholder="ใส่คีย์สำหรับ URL ที่นี่">
+            <input type="text" class="form-control" formControlName="slug" placeholder="ใส่คีย์สำหรับ URL ที่นี่" (blur)="autoCreateSlug()">
           </div>
         </div>
         <div class="row mt-2 text-editor-container">

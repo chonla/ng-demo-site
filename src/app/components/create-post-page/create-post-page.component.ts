@@ -94,7 +94,8 @@ export class CreatePostPageComponent implements OnInit {
     const title = this.postForm.value.title;
     let slug = this.postForm.value.slug;
     if (slug === '') {
-      slug = title.replace(/[\s\[\]\<\>;:!#?\/\\+\{\}\|\"'=]/ig, "_");;
+      slug = title.replace(/[\s\[\]\<\>;:!#?\/\\+\{\}\|\"'=]/ig, "_");
+      slug = slug.toLowerCase();
       this.postForm.patchValue({ slug: slug });
     }
   }

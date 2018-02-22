@@ -49,3 +49,7 @@ body {
   background-color: #004668;
   border-color: #001B28;
 }
+
+.ql-container {
+  font-size: 16px;
+}
