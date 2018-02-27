@@ -47,6 +47,7 @@ export class CreatePostPageComponent implements OnInit {
           doc => {
             post$.unsubscribe();
             this.postForm.setValue(doc);
+            this.categoryForm.setSelections(this.postForm.controls.categories.value);
             this.loadingModal.hide();
           }
         );
@@ -82,7 +83,7 @@ export class CreatePostPageComponent implements OnInit {
 
     this.postForm.patchValue({
       status: status,
-      categories: this.categoryForm.getSelected()
+      categories: this.categoryForm.getSelections()
     });
     const post = this.postForm.value;
     const obs = this.data.save('posts', post);
