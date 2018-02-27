@@ -34,6 +34,7 @@ import { DashIfEmptyPipe } from './pipes/dash-if-empty.pipe';
 import { SuccessAlertComponent } from './components/success-alert/success-alert.component';
 import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ThDatePipe } from './pipes/th-date.pipe';
 import { PostRowComponent } from './components/post-row/post-row.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
@@ -79,7 +80,8 @@ import { CategoryFormComponent } from './components/category-form/category-form.
     AngularFirestoreModule,
     HttpClientModule,
     QuillModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    CollapseModule.forRoot()
   ],
   providers: [
     AuthService,

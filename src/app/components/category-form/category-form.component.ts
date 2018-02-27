@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-category-form',
@@ -14,6 +15,7 @@ export class CategoryFormComponent implements OnInit {
   public categoryForm: FormGroup;
   public isSaving: boolean;
   public saving$: Subscription;
+  public isCollapsed: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -22,6 +24,7 @@ export class CategoryFormComponent implements OnInit {
   ) {
     this.initializeForm();
     this.isSaving = false;
+    this.isCollapsed = true;
   }
 
   ngOnInit() {
@@ -45,7 +48,8 @@ export class CategoryFormComponent implements OnInit {
 
     this.saving$ = obs.subscribe(doc => {
       this.saving$.unsubscribe();
-      this.categoryForm.setValue(category);
+      this.isCollapsed = true;
+      this.categoryForm.reset();
       this.isSaving = false;
     });
   }
