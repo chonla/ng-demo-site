@@ -40,6 +40,7 @@ import { PostRowComponent } from './components/post-row/post-row.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { CategoriesCheckboxesComponent } from './components/categories-checkboxes/categories-checkboxes.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
+import { CategoryPageComponent } from './components/category-page/category-page.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { CategoryFormComponent } from './components/category-form/category-form.
     PostRowComponent,
     ConfirmModalComponent,
     CategoriesCheckboxesComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    CategoryPageComponent
   ],
   imports: [
     BrowserModule,

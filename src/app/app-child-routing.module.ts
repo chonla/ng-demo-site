@@ -8,6 +8,7 @@ import { GalleryPageComponent } from './components/gallery-page/gallery-page.com
 import { AuthGuardService } from './services/auth-guard.service';
 import { PostsPageComponent } from './components/posts-page/posts-page.component';
 import { CreatePostPageComponent } from './components/create-post-page/create-post-page.component';
+import { CategoryPageComponent } from './components/category-page/category-page.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,11 @@ const routes: Routes = [
       {
         path: 'gallery',
         component: GalleryPageComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'category',
+        component: CategoryPageComponent,
         canActivate: [AuthGuardService]
       }
     ]
