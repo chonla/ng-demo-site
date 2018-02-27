@@ -37,6 +37,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ThDatePipe } from './pipes/th-date.pipe';
 import { PostRowComponent } from './components/post-row/post-row.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { CategoriesCheckboxesComponent } from './components/categories-checkboxes/categories-checkboxes.component';
+import { CategoryFormComponent } from './components/category-form/category-form.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
     LoadingModalComponent,
     ThDatePipe,
     PostRowComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    CategoriesCheckboxesComponent,
+    CategoryFormComponent
   ],
   imports: [
     BrowserModule,

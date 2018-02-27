@@ -23,6 +23,7 @@ export class CreatePostPageComponent implements OnInit {
   public saving$: Subscription;
   public post$: Observable<{}>;
   public env = environment;
+  public categoriesData;
 
   constructor(
     private fb: FormBuilder,
@@ -98,5 +99,9 @@ export class CreatePostPageComponent implements OnInit {
       slug = slug.toLowerCase();
       this.postForm.patchValue({ slug: slug });
     }
+  }
+
+  dataReceiver($event) {
+    this.categoriesData = $event;
   }
 }

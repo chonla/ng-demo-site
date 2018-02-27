@@ -1,0 +1,17 @@
+a.accordion-toggler {
+  width: 100%;
+  cursor: pointer;
+}
+
+a.accordion-toggler .toggler {
+  float: right;
+  font-size: 1.5em;
+}
+
+a.accordion-toggler.collapsed .toggler:before {
+  content: '\f0da';
+}
+
+a.accordion-toggler .toggler:before {
+  content: '\f0d7';
+}
