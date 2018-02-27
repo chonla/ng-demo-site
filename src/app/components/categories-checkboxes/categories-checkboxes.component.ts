@@ -39,24 +39,27 @@ export class CategoriesCheckboxesComponent implements OnInit, OnChanges {
     this.categoryForm = this.fb.group({
       category: this.fb.array(categoryCheckboxes)
     });
+    this.applySelections();
   }
 
   getSelections() {
     return this.selections;
   }
 
-  updateSelections(index, $event) {
-    this.selections = this.categoryForm.controls.category.value.map((o, i) => {
-      return {
-        'value': this.categoriesData[i].id,
-        'selected': o
-      };
-    }).filter(o => o.selected).map(o => o.value);
+  updateSelections($event) {
+    if ($event.target.checked) {
+      this.selections.push($event.target.value);
+    } else {
+      this.selections.splice(this.selections.indexOf($event.target.value), 1);
+    }
   }
 
   setSelections(values: string[]) {
     this.selections = values;
+    this.applySelections();
+  }
 
+  applySelections() {
     const checks = [];
     this.categoriesData.forEach((o, i) => {
       checks[i] = this.isSelected(o.id);
