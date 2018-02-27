@@ -18,6 +18,7 @@ export class CreatePostPageComponent implements OnInit {
   @ViewChild('successAlert') successAlert;
   @ViewChild('loadingModal') loadingModal;
   @ViewChild('savingModal') savingModal;
+  @ViewChild('categoryForm') categoryForm;
   public postForm: FormGroup;
   public isSaving: boolean;
   public saving$: Subscription;
@@ -62,7 +63,8 @@ export class CreatePostPageComponent implements OnInit {
       created_timestamp: '',
       updated_timestamp: '',
       author: this.auth.currentUser(),
-      status: ''
+      status: '',
+      categories: []
     });
   }
 
@@ -78,7 +80,10 @@ export class CreatePostPageComponent implements OnInit {
     this.savingModal.show('กำลังบันทึก...');
     this.isSaving = true;
 
-    this.postForm.patchValue({ status: status });
+    this.postForm.patchValue({
+      status: status,
+      categories: this.categoryForm.getSelected()
+    });
     const post = this.postForm.value;
     const obs = this.data.save('posts', post);
 

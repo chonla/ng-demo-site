@@ -49,8 +49,10 @@ export class CategoryFormComponent implements OnInit {
     this.saving$ = obs.subscribe(doc => {
       this.saving$.unsubscribe();
       this.isCollapsed = true;
-      this.categoryForm.reset();
+      this.initializeForm();
       this.isSaving = false;
     });
+
+    return false;
   }
 }

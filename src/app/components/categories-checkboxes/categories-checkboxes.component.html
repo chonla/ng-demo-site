@@ -1,8 +1,10 @@
-<div class="form-check">
-  <input type="checkbox" class="form-check-input" name="category" id="category_0" value="">
-  <label for="category_0" class="form-check-label">ไม่มีหมวดหมู่</label>
-</div>
-<div class="form-check mt-1" *ngFor="let cat of categoriesData | orderBy: ['created_timestamp']">
-  <input type="checkbox" class="form-check-input" name="category " id="category_{{ cat.id }}" value="{{ cat.id }}">
-  <label for="category_{{ cat.id }}" class="form-check-label">{{ cat.title }}</label>
-</div>
+<form [formGroup]="categoryForm">
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" name="category" id="category_0" value="">
+    <label for="category_0" class="form-check-label">ไม่มีหมวดหมู่</label>
+  </div>
+  <div class="form-check mt-1" *ngFor="let cat of categoriesData | orderBy: ['created_timestamp']; let i = index" formArrayName="category">
+    <input type="checkbox" class="form-check-input" formControlName="{{ i }}" name="category" id="category_{{ cat.id }}" value="{{ cat.id }}">
+    <label for="category_{{ cat.id }}" class="form-check-label">{{ cat.title }}</label>
+  </div>
+</form>

@@ -3,9 +3,9 @@
     <div class="page-title">สร้างบทความ</div>
   </div>
   <app-success-alert #successAlert></app-success-alert>
-  <div class="row">
-    <div class="col-9">
-      <form [formGroup]="postForm" novalidate>
+  <form [formGroup]="postForm" novalidate>
+    <div class="row">
+      <div class="col-9">
         <div class="row">
           <input type="text" class="form-control form-control-lg" formControlName="title" placeholder="ใส่ชื่อหัวข้อที่นี่" (blur)="autoCreateSlug()">
         </div>
@@ -20,35 +20,35 @@
         <div class="row mt-2 text-editor-container">
           <quill-editor [placeholder]="'ใส่ข้อความที่นี่'" formControlName="body"></quill-editor>
         </div>
-      </form>
-    </div>
-    <div class="col-3 pr-0">
-      <div class="card">
-        <div class="card-body">
-          <label>สถานะ:</label> {{ postForm.controls['status'].value | dashIfEmpty }}
-          <br>
-          <label>บันทึกเมื่อ:</label> {{ postForm.controls['updated_timestamp'].value | thDate: 'd MMM tttt' | dashIfEmpty }}
+      </div>
+      <div class="col-3 pr-0">
+        <div class="card">
+          <div class="card-body">
+            <label>สถานะ:</label> {{ postForm.controls['status'].value | dashIfEmpty }}
+            <br>
+            <label>บันทึกเมื่อ:</label> {{ postForm.controls['updated_timestamp'].value | thDate: 'd MMM tttt' | dashIfEmpty }}
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary" type="submit" (click)="saveDraft()" [disabled]="isSaving">
+              <i class="fa fa-pencil fw"></i> ร่าง
+            </button>
+            <button class="btn btn-primary float-right" type="submit" (click)="publishPost()" [disabled]="isSaving">
+              <i class="fa fa-cloud fw"></i> เผยแพร่
+            </button>
+          </div>
         </div>
-        <div class="card-footer">
-          <button class="btn btn-secondary" type="submit" (click)="saveDraft()" [disabled]="isSaving">
-            <i class="fa fa-pencil fw"></i> ร่าง
-          </button>
-          <button class="btn btn-primary float-right" type="submit" (click)="publishPost()" [disabled]="isSaving">
-            <i class="fa fa-cloud fw"></i> เผยแพร่
-          </button>
+        <div class="card mt-2">
+          <div class="card-header">หมวดหมู่</div>
+          <div class="card-body">
+            <app-categories-checkboxes #categoryForm appFirebaseResource="categories" (dataEmitter)="dataReceiver($event)" [categoriesData]="categoriesData"></app-categories-checkboxes>
+          </div>
+          <div class="card-body">
+            <app-category-form></app-category-form>
+          </div>
         </div>
       </div>
-      <div class="card mt-2">
-        <div class="card-header">หมวดหมู่</div>
-        <div class="card-body">
-          <app-categories-checkboxes appFirebaseResource="categories" (dataEmitter)="dataReceiver($event)" [categoriesData]="categoriesData"></app-categories-checkboxes>
-        </div>
-        <div class="card-body">
-          <app-category-form></app-category-form>
-        </div>
-      </div>
     </div>
-  </div>
+  </form>
 </div>
 <app-loading-modal #loadingModal message="กำลังโหลด..."></app-loading-modal>
 <app-loading-modal #savingModal message="กำลังบันทึก..."></app-loading-modal>
