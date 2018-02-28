@@ -12,5 +12,5 @@
     </div>
     <app-confirm-modal #confirmModal message="ยืนยันการลบหมวดหมู่"></app-confirm-modal>
   </td>
-  <td class="col-3 text-center">0</td>
+  <td class="col-3 text-center">{{ category.posts?category.posts.length:0 }}</td>
 </tr>
