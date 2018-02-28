@@ -43,6 +43,7 @@ import { CategoryFormComponent } from './components/category-form/category-form.
 import { CategoryPageComponent } from './components/category-page/category-page.component';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoryRowComponent } from './components/category-row/category-row.component';
+import { CategoryCollapsibleFormComponent } from './components/category-collapsible-form/category-collapsible-form.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { CategoryRowComponent } from './components/category-row/category-row.com
     CategoryFormComponent,
     CategoryPageComponent,
     CategoriesListComponent,
-    CategoryRowComponent
+    CategoryRowComponent,
+    CategoryCollapsibleFormComponent
   ],
   imports: [
     BrowserModule,

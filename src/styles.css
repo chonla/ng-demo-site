@@ -8,10 +8,22 @@ body {
   padding-top: 40px;
 }
 
+.page-content {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .page-title {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #343a40;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
   color: #343a40;
 }
 
@@ -52,4 +64,10 @@ body {
 
 .ql-container {
   font-size: 16px;
+}
+
+/* Font size override */
+
+.label-primary {
+  font-size: 1.2em;
 }

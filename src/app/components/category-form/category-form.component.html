@@ -1,18 +1,20 @@
-<div class="card" id="categoryAccordion">
-  <a class="accordion-toggler collapsed" (click)="isCollapsed = !isCollapsed">
-    <div class="card-header" id="categoryFormHeader">
-      สร้างหมวดหมู่ใหม่
-      <i class="fa fa-fw toggler"></i>
-    </div>
-  </a>
-  <div id="categoryForm" class="collapse" [collapse]="isCollapsed">
-    <form [formGroup]="categoryForm" novalidate>
-      <div class="card-body">
-        <div class="form-group">
-          <input type="text" class="form-control" formControlName="title" placeholder="ใส่ชื่อหมวดหมู่ใหม่ที่นี่">
+<div class="section-content">
+  <div class="row">
+    <div class="section-title">สร้างหมวดหมู่ใหม่</div>
+  </div>
+  <div class="row">
+    <div class="col-12 pl-0">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="categoryForm" novalidate>
+            <div class="form-group">
+              <label for="categoryId" class="label-primary">ชื่อหมวดหมู่</label>
+              <input type="text" class="form-control" id="categoryId" formControlName="title" placeholder="ใส่ชื่อหมวดหมู่ใหม่ที่นี่">
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="saveCategory()" [disabled]="isSaving">บันทึกหมวดหมู่</button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary" (click)="saveCategory()" [disabled]="isSaving">บันทึกหมวดหมู่</button>
       </div>
-    </form>
+    </div>
   </div>
 </div>

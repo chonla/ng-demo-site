@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-5">
-
+      <app-category-form></app-category-form>
     </div>
     <div class="col-7">
       <app-categories-list appFirebaseResource="categories" (dataEmitter)="dataReceiver($event)" [categoriesData]="categoriesData"></app-categories-list>
