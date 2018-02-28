@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-category-row',
@@ -12,7 +13,7 @@ export class CategoryRowComponent implements OnInit {
   @Input() category;
   @ViewChild('confirmModal') confirmModal;
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
     this.menuOff = true;
@@ -31,7 +32,18 @@ export class CategoryRowComponent implements OnInit {
   }
 
   trash() {
+    this.confirmModal.show().subscribe(result => {
+      if (result) {
+        this.moveToTrash();
+      }
+    });
+    return false;
+  }
 
+  moveToTrash() {
+    var obs$ = this.data.remove('categories', this.category.id).subscribe(_ => {
+      obs$.unsubscribe();
+    });
   }
 
 }

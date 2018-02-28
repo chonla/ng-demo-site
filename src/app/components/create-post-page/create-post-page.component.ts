@@ -7,6 +7,7 @@ import { ParamMap, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import { environment } from '../../../environments/environment';
+import 'rxjs/add/observable/forkJoin';
 
 @Component({
   selector: 'app-create-post-page',
@@ -81,9 +82,10 @@ export class CreatePostPageComponent implements OnInit {
     this.savingModal.show('กำลังบันทึก...');
     this.isSaving = true;
 
+    const selectedCategories = this.categoryForm.getSelections();
     this.postForm.patchValue({
       status: status,
-      categories: this.categoryForm.getSelections()
+      categories: selectedCategories
     });
     const post = this.postForm.value;
     const obs = this.data.save('posts', post);
@@ -91,10 +93,33 @@ export class CreatePostPageComponent implements OnInit {
     this.saving$ = obs.subscribe(doc => {
       this.saving$.unsubscribe();
       this.postForm.setValue(post);
+
+      this.addPostToCategories(selectedCategories, post.id);
+
       this.successAlert.show();
       this.isSaving = false;
       this.savingModal.hide();
     });
+  }
+
+  addPostToCategories(categories, id) {
+    var obs = [];
+    categories.forEach(o => {
+      obs.push(
+        this.data.get('categories', o).subscribe(d => {
+          if (d) {
+            if (!d.posts) {
+              d.posts = [];
+            }
+            if (d.posts.indexOf(id) === -1) {
+              d.posts.push(id);
+              obs.push(this.data.save(`categories`, d))
+            }
+          }
+        })
+      )
+    });
+    Observable.forkJoin(...obs);
   }
 
   autoCreateSlug() {
