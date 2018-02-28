@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryPageComponent implements OnInit {
 
+  public categoriesData;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  dataReceiver($event) {
+    this.categoriesData = $event;
+  }
 }

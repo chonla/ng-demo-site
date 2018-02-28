@@ -1,0 +1,11 @@
+<table class="table table-hover mt-2">
+  <thead>
+    <tr class="row">
+      <th scope="col" class="col-9">หมวดหมู่</th>
+      <th scope="col" class="col-3 text-center">จำนวนโพสต์</th>
+    </tr>
+  </thead>
+  <tbody>
+    <app-category-row *ngFor="let cat of categoriesData | orderBy: ['-created_timestamp']" [category]="cat"></app-category-row>
+  </tbody>
+</table>

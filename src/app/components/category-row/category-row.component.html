@@ -1,0 +1,16 @@
+<tr class="row category-row" (mousemove)="showMenu()" (mouseout)="hideMenu()">
+  <td class="col-9 category-title">{{ category.title }}
+    <div class="category-action" [hidden]="menuOff">
+      <ul>
+        <li>
+          <a href="#" (click)="edit()">แก้ไข</a>
+        </li>
+        <li>
+          <a href="#" (click)="trash()" class="trash">ย้ายไปถังขยะ</a>
+        </li>
+      </ul>
+    </div>
+    <app-confirm-modal #confirmModal message="ยืนยันการลบหมวดหมู่"></app-confirm-modal>
+  </td>
+  <td class="col-3 text-center">0</td>
+</tr>

@@ -41,6 +41,8 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
 import { CategoriesCheckboxesComponent } from './components/categories-checkboxes/categories-checkboxes.component';
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { CategoryPageComponent } from './components/category-page/category-page.component';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
+import { CategoryRowComponent } from './components/category-row/category-row.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { CategoryPageComponent } from './components/category-page/category-page.
     ConfirmModalComponent,
     CategoriesCheckboxesComponent,
     CategoryFormComponent,
-    CategoryPageComponent
+    CategoryPageComponent,
+    CategoriesListComponent,
+    CategoryRowComponent
   ],
   imports: [
     BrowserModule,

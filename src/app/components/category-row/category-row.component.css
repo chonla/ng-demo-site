@@ -1,8 +1,8 @@
-.post-row {
+.category-row {
   min-height: 64px;
 }
 
-.post-title {
+.category-title {
   font-weight: bold;
   color: #004668;
 }
@@ -11,18 +11,18 @@
   color: #a00;
 }
 
-.post-action ul {
+.category-action ul {
   list-style: none;
   padding: 0px;
   margin: 0px;
 }
 
-.post-action ul li {
+.category-action ul li {
   float: left;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-.post-action ul li:first-child {
+.category-action ul li:first-child {
   padding-left: 0px;
 }

@@ -1,0 +1,15 @@
+.category-title {
+  font-weight: bold;
+}
+
+th {
+  font-weight: normal;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.category-action {
+  font-weight: normal;
+}
