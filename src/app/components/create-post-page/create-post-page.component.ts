@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import { environment } from '../../../environments/environment';
 import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/observable/defer';
 
 @Component({
   selector: 'app-create-post-page',
@@ -23,9 +24,11 @@ export class CreatePostPageComponent implements OnInit {
   public postForm: FormGroup;
   public isSaving: boolean;
   public saving$: Subscription;
+  public catSyncing$: Subscription;
   public post$: Observable<{}>;
   public env = environment;
   public categoriesData;
+  private formerCategories;
 
   constructor(
     private fb: FormBuilder,
@@ -48,6 +51,7 @@ export class CreatePostPageComponent implements OnInit {
           doc => {
             post$.unsubscribe();
             this.postForm.setValue(doc);
+            this.formerCategories = this.postForm.controls.categories.value;
             this.categoryForm.setSelections(this.postForm.controls.categories.value);
             this.loadingModal.hide();
           }
@@ -94,32 +98,60 @@ export class CreatePostPageComponent implements OnInit {
       this.saving$.unsubscribe();
       this.postForm.setValue(post);
 
-      this.addPostToCategories(selectedCategories, post.id);
-
-      this.successAlert.show();
-      this.isSaving = false;
-      this.savingModal.hide();
+      this.catSyncing$ = this.syncPostToCategories(selectedCategories, post.id)
+        .subscribe((r) => {
+          this.catSyncing$.unsubscribe();
+          this.successAlert.show();
+          this.isSaving = false;
+          this.savingModal.hide();
+        });
     });
   }
 
-  addPostToCategories(categories, id) {
-    var obs = [];
-    categories.forEach(o => {
-      obs.push(
-        this.data.get('categories', o).subscribe(d => {
-          if (d) {
-            if (!d.posts) {
-              d.posts = [];
-            }
-            if (d.posts.indexOf(id) === -1) {
-              d.posts.push(id);
-              obs.push(this.data.save(`categories`, d))
+  syncPostToCategories(categories, id) {
+    var syncObservable = Observable.create(observer => {
+      var cat$ = this.data.get('categories').subscribe(cats => {
+        cat$.unsubscribe();
+        cats.forEach(cat => {
+          if (cat.posts && (cat.posts.indexOf(id) !== -1) && (categories.indexOf(cat.id) === -1)) {
+            // remove post from cat
+            cat.posts.splice(cat.posts.indexOf(id), 1);
+          } else {
+            if (((!cat.posts) || (cat.posts.indexOf(id) === -1)) && (categories.indexOf(cat.id) !== -1)) {
+              if (!cat.posts) {
+                cat.posts = [];
+              }
+              // add post to cat
+              cat.posts.push(id);
             }
           }
-        })
-      )
+          this.data.save('categories', cat);
+        });
+        observer.next(true);
+      });
+
     });
-    Observable.forkJoin(...obs);
+
+    return syncObservable;
+
+    // var obs = [];
+    // categories.forEach(o => {
+    //   obs.push(this.data.get('categories', o));
+    // });
+    // console.log(obs);
+    // Observable.forkJoin(...obs).subscribe((...dList) => {
+    //   dList.forEach(d => {
+    //     if (d) {
+    //       if (!d.posts) {
+    //         d.posts = [];
+    //       }
+    //       if (d.posts.indexOf(id) === -1) {
+    //         d.posts.push(id);
+    //         obs.push(this.data.save(`categories`, d))
+    //       }
+    //     }
+    //   });
+    // });
   }
 
   autoCreateSlug() {

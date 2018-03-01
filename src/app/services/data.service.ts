@@ -31,9 +31,12 @@ export class DataService {
     return Observable.fromPromise(col.doc(key).set(obj));
   }
 
-  public get(from, key): Observable<any> {
-    const doc = this.db.collection(from).doc(key);
-    return doc.valueChanges();
+  public get(from, key?): Observable<any> {
+    if (key) {
+      const doc = this.db.collection(from).doc(key);
+      return doc.valueChanges();
+    }
+    return this.db.collection(from).valueChanges();
   }
 
   public remove(from, key): Observable<void> {
