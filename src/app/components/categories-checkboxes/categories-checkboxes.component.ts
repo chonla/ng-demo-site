@@ -23,7 +23,6 @@ export class CategoriesCheckboxesComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes['categoriesData']);
     if (changes['categoriesData'].currentValue) {
       this.updateForm();
     }

@@ -18,7 +18,6 @@ export class TagsCheckboxesComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    console.log('OnInit', this.tagsData);
   }
 
   ngOnChanges(changes: SimpleChanges) {
