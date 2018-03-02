@@ -23,7 +23,6 @@ export class TagsCheckboxesComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['tagsData'].currentValue) {
-      console.log(changes);
       this.updateForm();
     }
   }
@@ -39,5 +38,9 @@ export class TagsCheckboxesComponent implements OnInit, OnChanges {
     this.tagForm = this.fb.group({
       tag: this.fb.array([])
     });
+  }
+
+  removeTag(index) {
+    this.tagsData.splice(index, 1);
   }
 }

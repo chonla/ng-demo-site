@@ -45,7 +45,6 @@ import { CategoriesListComponent } from './components/categories-list/categories
 import { CategoryRowComponent } from './components/category-row/category-row.component';
 import { CategoryCollapsibleFormComponent } from './components/category-collapsible-form/category-collapsible-form.component';
 import { TagsCheckboxesComponent } from './components/tags-checkboxes/tags-checkboxes.component';
-import { RemovableTagComponent } from './components/removable-tag/removable-tag.component';
 
 @NgModule({
   declarations: [
@@ -78,8 +77,7 @@ import { RemovableTagComponent } from './components/removable-tag/removable-tag.
     CategoriesListComponent,
     CategoryRowComponent,
     CategoryCollapsibleFormComponent,
-    TagsCheckboxesComponent,
-    RemovableTagComponent
+    TagsCheckboxesComponent
   ],
   imports: [
     BrowserModule,

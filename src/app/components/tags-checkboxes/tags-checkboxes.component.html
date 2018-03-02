@@ -1,7 +1,10 @@
 <form [formGroup]="tagForm">
   <ul class="tags-list">
     <li *ngFor="let tag of tagsData; let i = index" formArrayName="tag">
-      <app-removable-tag [tag]="tag"></app-removable-tag>
+      <span class="tag tag-secondary" *ngIf="!hidden">{{ tag.title }}
+        <i class="fa fa-close fa-fw" (click)="removeTag(i)"></i>
+        <input type="hidden" formControlName="{{ i }}" value="{{ tag.id }}">
+      </span>
     </li>
   </ul>
 </form>
