@@ -29,7 +29,6 @@ export class CreatePostPageComponent implements OnInit {
   public env = environment;
   public categoriesData;
   public tagsData;
-  private formerCategories;
 
   constructor(
     private fb: FormBuilder,
@@ -52,7 +51,6 @@ export class CreatePostPageComponent implements OnInit {
           doc => {
             post$.unsubscribe();
             this.postForm.setValue(doc);
-            this.formerCategories = this.postForm.controls.categories.value;
             this.categoryForm.setSelections(this.postForm.controls.categories.value);
             this.loadingModal.hide();
           }
@@ -71,7 +69,8 @@ export class CreatePostPageComponent implements OnInit {
       updated_timestamp: '',
       author: this.auth.currentUser(),
       status: '',
-      categories: []
+      categories: [],
+      tags: []
     });
   }
 
@@ -134,25 +133,6 @@ export class CreatePostPageComponent implements OnInit {
     });
 
     return syncObservable;
-
-    // var obs = [];
-    // categories.forEach(o => {
-    //   obs.push(this.data.get('categories', o));
-    // });
-    // console.log(obs);
-    // Observable.forkJoin(...obs).subscribe((...dList) => {
-    //   dList.forEach(d => {
-    //     if (d) {
-    //       if (!d.posts) {
-    //         d.posts = [];
-    //       }
-    //       if (d.posts.indexOf(id) === -1) {
-    //         d.posts.push(id);
-    //         obs.push(this.data.save(`categories`, d))
-    //       }
-    //     }
-    //   });
-    // });
   }
 
   autoCreateSlug() {

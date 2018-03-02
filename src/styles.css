@@ -71,3 +71,34 @@ body {
 .label-primary {
   font-size: 1.2em;
 }
+
+/* New defined components */
+
+.tag-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+.tag {
+  display: inline-block;
+  padding: .25em .4em;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+}
+
+.tags-list {
+  margin: 0px;
+  padding: 0px;
+}
+
+.tags-list li {
+  list-style-type: none;
+  float: left;
+}
+
+.tags-list li:not(:first-child) {
+  margin-left: 4px;
+}

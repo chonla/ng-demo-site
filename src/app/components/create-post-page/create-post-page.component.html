@@ -50,7 +50,7 @@
         <div class="card mt-2">
           <div class="card-header">แท็ก</div>
           <div class="card-body">
-            <app-tags-checkboxes appFirebaseResource="tags" (dataEmitter)="tagsDataReceiver($event)" [tagsData]="tagsData"></app-tags-checkboxes>
+            <app-tags-checkboxes [tagsData]="postForm.controls['tags'].value"></app-tags-checkboxes>
           </div>
         </div>
       </div>

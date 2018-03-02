@@ -1,0 +1,4 @@
+<span class="tag tag-secondary" *ngIf="!hidden">{{ tag.title }}
+  <i class="fa fa-close fa-fw" (click)="removeTag()"></i>
+  <input type="hidden" value="{{ tag.id }}">
+</span>

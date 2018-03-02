@@ -1,3 +1,7 @@
-<p>
-  tags-checkboxes works!
-</p>
+<form [formGroup]="tagForm">
+  <ul class="tags-list">
+    <li *ngFor="let tag of tagsData; let i = index" formArrayName="tag">
+      <app-removable-tag [tag]="tag"></app-removable-tag>
+    </li>
+  </ul>
+</form>
