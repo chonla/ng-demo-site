@@ -28,6 +28,7 @@ export class CreatePostPageComponent implements OnInit {
   public post$: Observable<{}>;
   public env = environment;
   public categoriesData;
+  public tagsData;
   private formerCategories;
 
   constructor(
@@ -164,7 +165,11 @@ export class CreatePostPageComponent implements OnInit {
     }
   }
 
-  dataReceiver($event) {
+  categoriesDataReceiver($event) {
     this.categoriesData = $event;
+  }
+
+  tagsDataReceiver($event) {
+    this.tagsData = $event;
   }
 }

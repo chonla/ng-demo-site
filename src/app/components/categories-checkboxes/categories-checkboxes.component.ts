@@ -23,6 +23,7 @@ export class CategoriesCheckboxesComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    console.log(changes['categoriesData']);
     if (changes['categoriesData'].currentValue) {
       this.updateForm();
     }
@@ -60,6 +61,10 @@ export class CategoriesCheckboxesComponent implements OnInit, OnChanges {
   }
 
   applySelections() {
+    if (!this.categoriesData) {
+      return;
+    }
+
     const checks = [];
     this.categoriesData.forEach((o, i) => {
       checks[i] = this.isSelected(o.id);

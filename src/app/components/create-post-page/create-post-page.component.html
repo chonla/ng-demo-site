@@ -40,10 +40,17 @@
         <div class="card mt-2">
           <div class="card-header">หมวดหมู่</div>
           <div class="card-body">
-            <app-categories-checkboxes #categoryForm appFirebaseResource="categories" (dataEmitter)="dataReceiver($event)" [categoriesData]="categoriesData"></app-categories-checkboxes>
+            <app-categories-checkboxes #categoryForm appFirebaseResource="categories" (dataEmitter)="categoriesDataReceiver($event)"
+              [categoriesData]="categoriesData"></app-categories-checkboxes>
           </div>
           <div class="card-body">
             <app-category-collapsible-form></app-category-collapsible-form>
+          </div>
+        </div>
+        <div class="card mt-2">
+          <div class="card-header">แท็ก</div>
+          <div class="card-body">
+            <app-tags-checkboxes appFirebaseResource="tags" (dataEmitter)="tagsDataReceiver($event)" [tagsData]="tagsData"></app-tags-checkboxes>
           </div>
         </div>
       </div>
