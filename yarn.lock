@@ -4521,9 +4521,19 @@ netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
+ng2-material-dropdown@~0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/ng2-material-dropdown/-/ng2-material-dropdown-0.8.2.tgz#2acd3f781030ef92bf31f05543d91148e68528ef"
+
 ngx-bootstrap@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-2.0.2.tgz#6862b2ee4764bb6cfd34c66528873d0d050c2faa"
+
+ngx-chips@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/ngx-chips/-/ngx-chips-1.6.5.tgz#8c0cce08c97f7b6c58451b0b631faf8aa0c8e675"
+  dependencies:
+    ng2-material-dropdown "~0.8.2"
 
 ngx-quill@^2.1.1:
   version "2.1.1"

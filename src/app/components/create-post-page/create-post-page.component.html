@@ -51,9 +51,7 @@
           <div class="card-header">แท็ก</div>
           <div class="card-body">
             <app-tags-adder [tagsData]="postForm.controls['tags'].value"></app-tags-adder>
-          </div>
-          <div class="card-body">
-            <app-tags-checkboxes [tagsData]="postForm.controls['tags'].value"></app-tags-checkboxes>
+            <tag-input [(ngModel)]="postForm.controls['tags'].value" formControlName="tags" theme='bootstrap' [hideForm]="true" [ripple]="false"></tag-input>
           </div>
         </div>
       </div>

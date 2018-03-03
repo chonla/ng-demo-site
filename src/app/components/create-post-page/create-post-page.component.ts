@@ -5,10 +5,8 @@ import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ParamMap, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap';
 import { environment } from '../../../environments/environment';
 import 'rxjs/add/observable/forkJoin';
-import 'rxjs/add/observable/defer';
 
 @Component({
   selector: 'app-create-post-page',
@@ -24,7 +22,9 @@ export class CreatePostPageComponent implements OnInit {
   public postForm: FormGroup;
   public isSaving: boolean;
   public saving$: Subscription;
-  public catSyncing$: Subscription;
+  public syncing$: Subscription;
+  public catSyncing: Observable<boolean>;
+  public tagSyncing: Observable<boolean>;
   public post$: Observable<{}>;
   public env = environment;
   public categoriesData;
@@ -91,6 +91,7 @@ export class CreatePostPageComponent implements OnInit {
       status: status,
       categories: selectedCategories
     });
+    const selectedTags = this.postForm.controls['tags'].value;
     const post = this.postForm.value;
     const obs = this.data.save('posts', post);
 
@@ -98,9 +99,11 @@ export class CreatePostPageComponent implements OnInit {
       this.saving$.unsubscribe();
       this.postForm.setValue(post);
 
-      this.catSyncing$ = this.syncPostToCategories(selectedCategories, post.id)
+      this.catSyncing = this.syncPostToCategories(selectedCategories, post.id);
+      this.tagSyncing = this.syncPostToTags(selectedTags, post.id);
+      this.syncing$ = Observable.forkJoin(this.catSyncing, this.tagSyncing)
         .subscribe((r) => {
-          this.catSyncing$.unsubscribe();
+          this.syncing$.unsubscribe();
           this.successAlert.show();
           this.isSaving = false;
           this.savingModal.hide();
@@ -108,7 +111,36 @@ export class CreatePostPageComponent implements OnInit {
     });
   }
 
-  syncPostToCategories(categories, id) {
+  syncPostToTags(tagList, id): Observable<any> {
+    var syncObservable = Observable.create(observer => {
+      var tag$ = this.data.get('tags').subscribe(tags => {
+        tag$.unsubscribe();
+        if (tags !== []) {
+          tags.forEach(tag => {
+            if (tag.posts && (tag.posts.indexOf(id) !== -1) && (tagList.indexOf(tag.title) === -1)) {
+              // remove post from tag
+              console.log('remove post from tag');
+            } else {
+              if (((!tag.posts) || (tag.posts.indexOf(id) === -1)) && (tagList.indexOf(tag.title) !== -1)) {
+                if (!tag.posts) {
+                  tag.posts = [];
+                }
+                // add post to tag
+                console.log('add post to tag');
+              }
+            }
+          });
+        } else {
+          console.log('add post to all tags');
+        }
+        observer.next(true);
+        observer.complete();
+      });
+    });
+    return syncObservable;
+  }
+
+  syncPostToCategories(categories, id): Observable<any> {
     var syncObservable = Observable.create(observer => {
       var cat$ = this.data.get('categories').subscribe(cats => {
         cat$.unsubscribe();
@@ -128,8 +160,8 @@ export class CreatePostPageComponent implements OnInit {
           this.data.save('categories', cat);
         });
         observer.next(true);
+        observer.complete();
       });
-
     });
 
     return syncObservable;

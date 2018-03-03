@@ -1,7 +1,8 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TagInputModule } from 'ngx-chips';
 
 import { AppComponent } from './app.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
@@ -44,7 +45,6 @@ import { CategoryPageComponent } from './components/category-page/category-page.
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoryRowComponent } from './components/category-row/category-row.component';
 import { CategoryCollapsibleFormComponent } from './components/category-collapsible-form/category-collapsible-form.component';
-import { TagsCheckboxesComponent } from './components/tags-checkboxes/tags-checkboxes.component';
 import { TagsAdderComponent } from './components/tags-adder/tags-adder.component';
 
 @NgModule({
@@ -78,13 +78,13 @@ import { TagsAdderComponent } from './components/tags-adder/tags-adder.component
     CategoriesListComponent,
     CategoryRowComponent,
     CategoryCollapsibleFormComponent,
-    TagsCheckboxesComponent,
     TagsAdderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AppChildRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -93,7 +93,8 @@ import { TagsAdderComponent } from './components/tags-adder/tags-adder.component
     HttpClientModule,
     QuillModule,
     ModalModule.forRoot(),
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    TagInputModule
   ],
   providers: [
     AuthService,

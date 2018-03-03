@@ -24,19 +24,13 @@ export class TagsAdderComponent implements OnInit {
 
   initializeForm() {
     this.tagForm = this.fb.group({
-      id: '',
-      title: '',
-      created_timestamp: '',
-      updated_timestamp: '',
-      creator: this.auth.currentUser()
+      title: ''
     });
   }
 
   addTag() {
-    this.tagsData.push({
-      id: "cccc",
-      title: this.tagForm.controls['title'].value
-    });
+    this.tagsData.push(this.tagForm.controls['title'].value);
+    this.tagForm.reset();
     return false;
   }
 }

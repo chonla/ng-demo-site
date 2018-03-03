@@ -102,3 +102,13 @@ body {
 .tags-list li:not(:first-child) {
   margin-left: 4px;
 }
+
+/* Style override */
+
+.bootstrap.ng2-tag-input {
+  border-bottom: none !important;
+}
+
+.bootstrap tag {
+  background-color: #005B87 !important;
+}
