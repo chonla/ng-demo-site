@@ -20,7 +20,6 @@ export class TagsAdderComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.tagsData);
   }
 
   initializeForm() {
