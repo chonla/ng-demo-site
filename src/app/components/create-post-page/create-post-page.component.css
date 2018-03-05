@@ -1,3 +1,8 @@
 .text-editor-container {
-  height: 300px !important;
+  height: 350px !important;
+  margin-bottom: 75px;
+}
+
+.trash {
+  color: #a00;
 }

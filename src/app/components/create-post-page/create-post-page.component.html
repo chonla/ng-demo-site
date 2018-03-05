@@ -20,6 +20,18 @@
         <div class="row mt-2 text-editor-container">
           <quill-editor [placeholder]="'ใส่ข้อความที่นี่'" formControlName="body"></quill-editor>
         </div>
+        <div class="row mt-2" *ngIf="postForm.controls['id'].value !== ''">
+          <div class="col-12 pr-0 pl-0">
+            <div class="card bg-danger">
+              <div class="card-header text-white">ลบโพสต์</div>
+              <div class="card-body bg-light">
+                คุณสามารถลบโพสต์นี้ได้ โดยการ
+                <a href="#" (click)="trash()" class="trash">ย้ายไปถังขยะ</a>
+                <app-confirm-modal #confirmModal message="ยืนยันการลบโพสต์"></app-confirm-modal>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-3 pr-0">
         <div class="card">

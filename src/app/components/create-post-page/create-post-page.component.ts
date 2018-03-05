@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs/Subscription';
-import { ParamMap, ActivatedRoute } from '@angular/router';
+import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import 'rxjs/add/observable/forkJoin';
@@ -19,6 +19,8 @@ export class CreatePostPageComponent implements OnInit {
   @ViewChild('loadingModal') loadingModal;
   @ViewChild('savingModal') savingModal;
   @ViewChild('categoryForm') categoryForm;
+  @ViewChild('confirmModal') confirmModal;
+
   public postForm: FormGroup;
   public isSaving: boolean;
   public saving$: Subscription;
@@ -36,7 +38,8 @@ export class CreatePostPageComponent implements OnInit {
     private data: DataService,
     private auth: AuthService,
     private route: ActivatedRoute,
-    private changeDetector: ChangeDetectorRef) {
+    private changeDetector: ChangeDetectorRef,
+    private router: Router) {
     this.initializeForm();
     this.isSaving = false;
     this.tagList = [];
@@ -54,6 +57,7 @@ export class CreatePostPageComponent implements OnInit {
             post$.unsubscribe();
             this.postForm.setValue(doc);
             this.categoryForm.setSelections(this.postForm.controls.categories.value);
+            this.tagList = this.postForm.controls.tags.value;
             this.loadingModal.hide();
           }
         );
@@ -192,5 +196,21 @@ export class CreatePostPageComponent implements OnInit {
 
   tagsDataReceiver($event) {
     this.tagsData = $event;
+  }
+
+  trash() {
+    this.confirmModal.show().subscribe(result => {
+      if (result) {
+        this.moveToTrash();
+      }
+    });
+    return false;
+  }
+
+  moveToTrash() {
+    var obs$ = this.data.remove('posts', this.postForm.controls.id.value).subscribe(_ => {
+      obs$.unsubscribe();
+      this.router.navigate(['/user/posts']);
+    });
   }
 }
