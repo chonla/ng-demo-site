@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthService } from '../../services/auth.service';
@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 })
 export class CategoryFormComponent implements OnInit {
 
+  @ViewChild('successAlert') successAlert;
   public categoryForm: FormGroup;
   public isSaving: boolean;
   public saving$: Subscription;
@@ -48,6 +49,7 @@ export class CategoryFormComponent implements OnInit {
       this.saving$.unsubscribe();
       this.initializeForm();
       this.isSaving = false;
+      this.successAlert.show();
     });
 
     return false;

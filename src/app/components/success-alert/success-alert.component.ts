@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,7 +8,7 @@ import * as $ from 'jquery';
 })
 export class SuccessAlertComponent implements OnInit {
   @ViewChild('alertBox') alertBox;
-  public shown: boolean;
+  @Output() public shown: boolean;
 
   constructor() {
     this.shown = false;
