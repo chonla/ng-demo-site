@@ -10,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 export class TagsAdderComponent implements OnInit {
 
   public tagForm: FormGroup;
-  @Input() tagsData;
+  @Input() tagsData: string[];
 
   constructor(
     private fb: FormBuilder,
@@ -20,6 +20,7 @@ export class TagsAdderComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.tagsData);
   }
 
   initializeForm() {

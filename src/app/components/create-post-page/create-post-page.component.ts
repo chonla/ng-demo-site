@@ -29,6 +29,7 @@ export class CreatePostPageComponent implements OnInit {
   public env = environment;
   public categoriesData;
   public tagsData;
+  public tagList: string[];
 
   constructor(
     private fb: FormBuilder,
@@ -38,6 +39,7 @@ export class CreatePostPageComponent implements OnInit {
     private changeDetector: ChangeDetectorRef) {
     this.initializeForm();
     this.isSaving = false;
+    this.tagList = [];
   }
 
   ngOnInit() {
@@ -89,7 +91,8 @@ export class CreatePostPageComponent implements OnInit {
     const selectedCategories = this.categoryForm.getSelections();
     this.postForm.patchValue({
       status: status,
-      categories: selectedCategories
+      categories: selectedCategories,
+      tags: this.tagList
     });
     const selectedTags = this.postForm.controls['tags'].value;
     const post = this.postForm.value;
@@ -131,6 +134,12 @@ export class CreatePostPageComponent implements OnInit {
             }
           });
         } else {
+          tagList.forEach(tag => {
+            this.data.save('tags', {
+              "title": tag,
+              "posts": [id]
+            });
+          });
           console.log('add post to all tags');
         }
         observer.next(true);

@@ -50,8 +50,8 @@
         <div class="card mt-2">
           <div class="card-header">แท็ก</div>
           <div class="card-body">
-            <app-tags-adder [tagsData]="postForm.controls['tags'].value"></app-tags-adder>
-            <tag-input [(ngModel)]="postForm.controls['tags'].value" formControlName="tags" theme='bootstrap' [hideForm]="true" [ripple]="false"></tag-input>
+            <app-tags-adder [tagsData]="tagList"></app-tags-adder>
+            <tag-input [(ngModel)]="tagList" formControlName="tags" theme='bootstrap' [hideForm]="true" [ripple]="false"></tag-input>
           </div>
         </div>
       </div>
