@@ -7,6 +7,8 @@ import { ParamMap, ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import 'rxjs/add/observable/forkJoin';
+import { LoadingModalComponent } from '../loading-modal/loading-modal.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-create-post-page',
@@ -16,8 +18,8 @@ import 'rxjs/add/observable/forkJoin';
 export class CreatePostPageComponent implements OnInit {
 
   @ViewChild('successAlert') successAlert;
-  @ViewChild('loadingModal') loadingModal;
-  @ViewChild('savingModal') savingModal;
+  // @ViewChild('loadingModal') loadingModal;
+  // @ViewChild('savingModal') savingModal;
   @ViewChild('categoryForm') categoryForm;
   @ViewChild('confirmModal') confirmModal;
 
@@ -39,7 +41,9 @@ export class CreatePostPageComponent implements OnInit {
     private auth: AuthService,
     private route: ActivatedRoute,
     private changeDetector: ChangeDetectorRef,
-    private router: Router) {
+    private router: Router,
+    private modalService: BsModalService
+  ) {
     this.initializeForm();
     this.isSaving = false;
     this.tagList = [];
@@ -50,7 +54,18 @@ export class CreatePostPageComponent implements OnInit {
       const postId = this.route.snapshot.paramMap.get('id');
       if (postId !== null && postId !== '') {
         this.changeDetector.detectChanges();
-        this.loadingModal.show();
+        const loadingModalOptions = {
+          initialState: {
+            message: 'กำลังโหลด'
+          },
+          animated: true,
+          backdrop: true,
+          keyboard: false,
+          focus: true,
+          ignoreBackdropClick: true,
+          class: 'modal-sm'
+        };
+        var loadingModalRef = this.modalService.show(LoadingModalComponent, loadingModalOptions);
         const obs = this.data.get('posts', postId);
         const post$ = obs.subscribe(
           doc => {
@@ -58,7 +73,7 @@ export class CreatePostPageComponent implements OnInit {
             this.postForm.setValue(doc);
             this.categoryForm.setSelections(this.postForm.controls.categories.value);
             this.tagList = this.postForm.controls.tags.value;
-            this.loadingModal.hide();
+            loadingModalRef.hide();
           }
         );
       }
@@ -89,7 +104,19 @@ export class CreatePostPageComponent implements OnInit {
   }
 
   savePost(status: string) {
-    this.savingModal.show('กำลังบันทึก...');
+    const loadingModalOptions = {
+      initialState: {
+        message: 'กำลังบันทึก'
+      },
+      animated: true,
+      backdrop: true,
+      keyboard: false,
+      focus: true,
+      ignoreBackdropClick: true,
+      class: 'modal-sm'
+    };
+    var savingModalRef = this.modalService.show(LoadingModalComponent, loadingModalOptions);
+
     this.isSaving = true;
 
     const selectedCategories = this.categoryForm.getSelections();
@@ -113,7 +140,7 @@ export class CreatePostPageComponent implements OnInit {
           this.syncing$.unsubscribe();
           this.successAlert.show();
           this.isSaving = false;
-          this.savingModal.hide();
+          savingModalRef.hide();
         });
     });
   }
