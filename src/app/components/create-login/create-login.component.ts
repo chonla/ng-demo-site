@@ -52,12 +52,23 @@ export class CreateLoginComponent {
       return;
     }
 
-    var loadingModalRef = this.modalService.show(LoadingModalComponent);
+    const loadingModalOptions = {
+      initialState: {
+        message: 'กำลังสร้างล็อกอิน'
+      },
+      animated: true,
+      backdrop: true,
+      keyboard: false,
+      focus: true,
+      ignoreBackdropClick: true,
+      class: 'modal-sm'
+    };
+    var loadingModalRef = this.modalService.show(LoadingModalComponent, loadingModalOptions);
     this.auth.create(formModel)
       .then(_ => {
+        loadingModalRef.hide();
         this.bsModalRef.hide();
         this.dataEmitter.emit(true);
-        loadingModalRef.hide();
       })
       .catch(e => {
         loadingModalRef.hide();

@@ -9,7 +9,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 })
 export class LoadingModalComponent implements OnInit {
 
-  @ViewChild('loadingModal') loadingModal: TemplateRef<any>;
+  // @ViewChild('loadingModal') loadingModal: TemplateRef<any>;
   @Input('message') message;
   public modalRef: BsModalRef;
 
@@ -18,17 +18,17 @@ export class LoadingModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  show() {
-    const options: ModalOptions = {
-      animated: true,
-      backdrop: true,
-      keyboard: false,
-      focus: true,
-      ignoreBackdropClick: true,
-      class: 'modal-sm'
-    };
-    this.modalRef = this.modalService.show(this.loadingModal, options);
-  }
+  // show() {
+  //   const options: ModalOptions = {
+  //     animated: true,
+  //     backdrop: true,
+  //     keyboard: false,
+  //     focus: true,
+  //     ignoreBackdropClick: true,
+  //     class: 'modal-sm'
+  //   };
+  //   this.modalRef = this.modalService.show(this.loadingModal, options);
+  // }
 
   hide() {
     this.modalRef.hide();

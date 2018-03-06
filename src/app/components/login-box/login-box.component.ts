@@ -60,7 +60,14 @@ export class LoginBoxComponent implements OnInit {
   }
 
   createLogin() {
-    this.modalService.show(CreateLoginComponent);
+    const createLoginModalOptions = {
+      animated: true,
+      backdrop: true,
+      keyboard: false,
+      focus: true,
+      ignoreBackdropClick: true
+    };
+    this.modalService.show(CreateLoginComponent, createLoginModalOptions);
     return false;
   }
 
