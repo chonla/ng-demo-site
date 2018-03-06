@@ -62,6 +62,14 @@ body {
   border-color: #001B28;
 }
 
+.btn-link {
+  color: #005B87;
+}
+
+.btn-link:hover {
+  color: #001B28;
+}
+
 .ql-container {
   font-size: 16px;
 }

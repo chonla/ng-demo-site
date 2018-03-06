@@ -11,6 +11,7 @@ import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 })
 export class LoginBoxComponent implements OnInit {
   @ViewChild('errorModal') error: ErrorAlertComponent;
+  @ViewChild('createLoginModal') createLoginModal;
   loginForm: FormGroup;
   locked: boolean;
 
@@ -54,6 +55,11 @@ export class LoginBoxComponent implements OnInit {
 
   unlock() {
     this.locked = false;
+  }
+
+  createLogin() {
+    this.createLoginModal.show();
+    return false;
   }
 
 }

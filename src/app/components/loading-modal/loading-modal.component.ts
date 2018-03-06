@@ -24,7 +24,8 @@ export class LoadingModalComponent implements OnInit {
       backdrop: true,
       keyboard: false,
       focus: true,
-      ignoreBackdropClick: true
+      ignoreBackdropClick: true,
+      class: 'modal-sm'
     };
     this.modalRef = this.modalService.show(this.loadingModal, options);
   }

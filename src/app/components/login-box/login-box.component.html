@@ -25,8 +25,10 @@
 
       <app-error-alert #errorModal></app-error-alert>
     </div>
-    <div class="card-footer text-right">
-      <button id="login" type="submit" class="btn btn-primary" [disabled]="locked">ล็อกอิน</button>
+    <div class="card-footer">
+      <button class="btn btn-link" (click)="createLogin()">สร้างล็อกอินใหม่</button>
+      <button id="login" type="submit" class="btn btn-primary float-right" [disabled]="locked">ล็อกอิน</button>
     </div>
   </form>
+  <app-create-login #createLoginModal></app-create-login>
 </div>

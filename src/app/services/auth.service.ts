@@ -37,6 +37,10 @@ export class AuthService {
     });
   }
 
+  create(credential): Promise<any> {
+    return this.fireauth.auth.createUserWithEmailAndPassword(credential.username, credential.password);
+  }
+
   logout() {
     return this.fireauth.auth.signOut();
   }

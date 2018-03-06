@@ -46,6 +46,7 @@ import { CategoriesListComponent } from './components/categories-list/categories
 import { CategoryRowComponent } from './components/category-row/category-row.component';
 import { CategoryCollapsibleFormComponent } from './components/category-collapsible-form/category-collapsible-form.component';
 import { TagsAdderComponent } from './components/tags-adder/tags-adder.component';
+import { CreateLoginComponent } from './components/create-login/create-login.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { TagsAdderComponent } from './components/tags-adder/tags-adder.component
     CategoriesListComponent,
     CategoryRowComponent,
     CategoryCollapsibleFormComponent,
-    TagsAdderComponent
+    TagsAdderComponent,
+    CreateLoginComponent
   ],
   imports: [
     BrowserModule,
