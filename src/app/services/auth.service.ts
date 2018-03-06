@@ -33,7 +33,7 @@ export class AuthService {
 
   login(credential) {
     return this.fireauth.auth.setPersistence(environment.authen.persistence).then(() => {
-      return this.fireauth.auth.signInWithEmailAndPassword(credential.username + '@demo-site.com', credential.password);
+      return this.fireauth.auth.signInWithEmailAndPassword(credential.username, credential.password);
     });
   }
 

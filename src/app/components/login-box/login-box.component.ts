@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorAlertComponent } from '../error-alert/error-alert.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { CreateLoginComponent } from '../create-login/create-login.component';
 
 @Component({
   selector: 'app-login-box',
@@ -11,14 +13,14 @@ import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 })
 export class LoginBoxComponent implements OnInit {
   @ViewChild('errorModal') error: ErrorAlertComponent;
-  @ViewChild('createLoginModal') createLoginModal;
   loginForm: FormGroup;
   locked: boolean;
 
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private modalService: BsModalService
   ) {
     this.initForm();
   }
@@ -58,7 +60,7 @@ export class LoginBoxComponent implements OnInit {
   }
 
   createLogin() {
-    this.createLoginModal.show();
+    this.modalService.show(CreateLoginComponent);
     return false;
   }
 

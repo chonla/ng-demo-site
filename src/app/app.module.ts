@@ -98,6 +98,11 @@ import { CreateLoginComponent } from './components/create-login/create-login.com
     CollapseModule.forRoot(),
     TagInputModule
   ],
+  entryComponents: [
+    CreateLoginComponent,
+    ErrorAlertComponent,
+    LoadingModalComponent
+  ],
   providers: [
     AuthService,
     DataService

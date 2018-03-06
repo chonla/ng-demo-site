@@ -1,30 +1,26 @@
-<ng-template #createLoginModal>
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">สร้างล็อกอินใหม่</h4>
-    </div>
-    <form [formGroup]="registerForm">
-      <div class="modal-body text-left">
-        <div class="form-group">
-          <label for="newUsername">อีเมล</label>
-          <input type="email" class="form-control" id="newUsername" formControlName="username" placeholder="ใส่อีเมล อีเมลจะถูกใช้เป็นล็อกอิน">
-        </div>
-        <div class="form-group">
-          <label for="newPassword">รหัสผ่าน</label>
-          <input type="password" class="form-control" id="newPassword" formControlName="password" placeholder="รหัสผ่าน">
-        </div>
-        <div class="form-group">
-          <label for="newCconfirmedPassword">ยืนยันรหัสผ่าน</label>
-          <input type="password" class="form-control" id="newCconfirmedPassword" formControlName="confirmedPassword" placeholder="ยืนยันรหัสผ่าน">
-        </div>
-        <app-error-alert #errorModal></app-error-alert>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary mr-3" (click)="confirm()">สร้างล็อกอิน</button>
-        <button type="button" class="btn btn-default" (click)="decline()">ยกเลิก</button>
-      </div>
-    </form>
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">สร้างล็อกอินใหม่</h4>
   </div>
-</ng-template>
-
-<app-loading-modal #loadingModal message="กำลังสร้างล็อกอิน..."></app-loading-modal>
+  <form [formGroup]="registerForm">
+    <div class="modal-body text-left">
+      <div class="form-group">
+        <label for="newUsername">อีเมล</label>
+        <input type="email" class="form-control" id="newUsername" formControlName="username" placeholder="ใส่อีเมล อีเมลจะถูกใช้เป็นล็อกอิน">
+      </div>
+      <div class="form-group">
+        <label for="newPassword">รหัสผ่าน</label>
+        <input type="password" class="form-control" id="newPassword" formControlName="password" placeholder="รหัสผ่าน">
+      </div>
+      <div class="form-group">
+        <label for="newCconfirmedPassword">ยืนยันรหัสผ่าน</label>
+        <input type="password" class="form-control" id="newCconfirmedPassword" formControlName="confirmedPassword" placeholder="ยืนยันรหัสผ่าน">
+      </div>
+      <app-error-alert #errorModal></app-error-alert>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary mr-3" (click)="confirm()">สร้างล็อกอิน</button>
+      <button type="button" class="btn btn-default" (click)="decline()">ยกเลิก</button>
+    </div>
+  </form>
+</div>

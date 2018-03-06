@@ -10,8 +10,8 @@
             <i class="fa fa-user fa-fw" aria-hidden="true"></i>
           </span>
         </div>
-        <input id="username" type="text" formControlName="username" class="form-control" placeholder="ชื่อผู้ใช้ (demouser)" aria-label="Username"
-          aria-describedby="basic-addon1" [readOnly]="locked">
+        <input id="username" type="text" formControlName="username" class="form-control" placeholder="ชื่อผู้ใช้ (demouser@m150.me)"
+          aria-label="Username" aria-describedby="basic-addon1" [readOnly]="locked">
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -26,9 +26,8 @@
       <app-error-alert #errorModal></app-error-alert>
     </div>
     <div class="card-footer">
-      <button class="btn btn-link" (click)="createLogin()">สร้างล็อกอินใหม่</button>
+      <button type="button" class="btn btn-link" (click)="createLogin()">สร้างล็อกอินใหม่</button>
       <button id="login" type="submit" class="btn btn-primary float-right" [disabled]="locked">ล็อกอิน</button>
     </div>
   </form>
-  <app-create-login #createLoginModal></app-create-login>
 </div>
