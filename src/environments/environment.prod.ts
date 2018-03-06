@@ -8,5 +8,6 @@ export const environment = {
   },
   authen: {
     persistence: 'session'
-  }
+  },
+  slugBase: 'http://demo.m150.me/'
 };
