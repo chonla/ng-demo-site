@@ -40,6 +40,12 @@ export class CreateLoginComponent {
   confirm() {
     const formModel = this.registerForm.value;
 
+    if (formModel.username === '') {
+      this.error.show('สร้างล็อกอินไม่สำเร็จ', 'โปรดระบุอีเมลเพื่อใช้ในการล็อกอิน');
+      this.dataEmitter.emit(false);
+      return;
+    }
+
     if (formModel.password !== formModel.confirmedPassword) {
       this.error.show('สร้างล็อกอินไม่สำเร็จ', 'รหัสผ่านยืนยันไม่ตรงกับรหัสผ่านที่ระบุ');
       this.dataEmitter.emit(false);
