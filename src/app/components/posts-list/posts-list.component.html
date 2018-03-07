@@ -11,6 +11,15 @@
     </tr>
   </thead>
   <tbody>
-    <app-post-row *ngFor="let post of postsData | orderBy: ['-created_timestamp']" [post]="post"></app-post-row>
+    <ng-container *ngIf="postsData.length > 0">
+      <app-post-row *ngFor="let post of postsData | orderBy: ['-created_timestamp']" [post]="post"></app-post-row>
+    </ng-container>
+    <ng-container *ngIf="postsData.length === 0">
+      <tr class="row">
+        <td scope="col" colspan="5" class="col-12 text-center">
+          ไม่มีข้อมูล
+        </td>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
