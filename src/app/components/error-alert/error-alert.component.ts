@@ -23,8 +23,8 @@ import { trigger, style, animate, transition } from '@angular/animations';
 })
 export class ErrorAlertComponent implements OnInit {
 
-  title;
-  message;
+  public title;
+  public message;
   public showed = false;
 
   constructor() { }

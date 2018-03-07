@@ -138,7 +138,7 @@ export class CreatePostPageComponent implements OnInit {
       this.syncing$ = Observable.forkJoin(this.catSyncing, this.tagSyncing)
         .subscribe((r) => {
           this.syncing$.unsubscribe();
-          this.successAlert.show();
+          this.successAlert.show('เยี่ยมไปเลย!', 'บทความใหม่ของคุณถูกบันทึกไว้เรียบร้อยแล้ว');
           this.isSaving = false;
           savingModalRef.hide();
         });

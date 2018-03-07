@@ -49,7 +49,7 @@ export class CategoryFormComponent implements OnInit {
       this.saving$.unsubscribe();
       this.initializeForm();
       this.isSaving = false;
-      this.successAlert.show();
+      this.successAlert.show('เยี่ยมไปเลย!', 'หมวดหมู่ใหม่ของคุณถูกบันทึกไว้เรียบร้อยแล้ว');
     });
 
     return false;

@@ -10,6 +10,9 @@ export class SuccessAlertComponent implements OnInit {
   @ViewChild('alertBox') alertBox;
   @Output() public shown: boolean;
 
+  public title;
+  public message;
+
   constructor() {
     this.shown = false;
   }
@@ -17,7 +20,9 @@ export class SuccessAlertComponent implements OnInit {
   ngOnInit() {
   }
 
-  show() {
+  show(title, message) {
+    this.title = title;
+    this.message = message;
     this.shown = true;
   }
 
