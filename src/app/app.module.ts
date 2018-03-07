@@ -47,6 +47,7 @@ import { CategoryRowComponent } from './components/category-row/category-row.com
 import { CategoryCollapsibleFormComponent } from './components/category-collapsible-form/category-collapsible-form.component';
 import { TagsAdderComponent } from './components/tags-adder/tags-adder.component';
 import { CreateLoginComponent } from './components/create-login/create-login.component';
+import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { CreateLoginComponent } from './components/create-login/create-login.com
     CategoryRowComponent,
     CategoryCollapsibleFormComponent,
     TagsAdderComponent,
-    CreateLoginComponent
+    CreateLoginComponent,
+    EditCategoryPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-row',
@@ -13,7 +14,10 @@ export class CategoryRowComponent implements OnInit {
   @Input() category;
   @ViewChild('confirmModal') confirmModal;
 
-  constructor(private data: DataService) { }
+  constructor(
+    private data: DataService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.menuOff = true;
@@ -28,7 +32,8 @@ export class CategoryRowComponent implements OnInit {
   }
 
   edit() {
-
+    this.router.navigate(['/user/edit-category', { id: this.category.id }]);
+    return false;
   }
 
   trash() {

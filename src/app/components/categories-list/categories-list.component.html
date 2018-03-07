@@ -6,10 +6,10 @@
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngIf="categoriesData.length > 0">
+    <ng-container *ngIf="categoriesData && categoriesData.length > 0">
       <app-category-row *ngFor="let cat of categoriesData | orderBy: ['-created_timestamp']" [category]="cat"></app-category-row>
     </ng-container>
-    <ng-container *ngIf="categoriesData.length === 0">
+    <ng-container *ngIf="categoriesData && categoriesData.length === 0">
       <tr class="row">
         <td scope="col" colspan="5" class="col-12 text-center">
           ไม่มีข้อมูล

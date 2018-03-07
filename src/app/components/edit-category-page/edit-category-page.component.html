@@ -1,0 +1,20 @@
+<div class="page-content">
+  <div class="row">
+    <div class="page-title">แก้ไขหมวดหมู่</div>
+  </div>
+  <app-success-alert #successAlert></app-success-alert>
+  <form [formGroup]="categoryForm" novalidate>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <input type="text" class="form-control form-control-lg" formControlName="title" placeholder="ใส่ชื่อหมวดหมู่ที่นี่">
+        </div>
+        <div class="row mt-2">
+          <button class="btn btn-primary float-right" type="submit" (click)="save()" [disabled]="isSaving">
+            <i class="fa fa-cloud fw"></i> บันทึก
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
