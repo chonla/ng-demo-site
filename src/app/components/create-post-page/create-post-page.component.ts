@@ -188,6 +188,7 @@ export class CreatePostPageComponent implements OnInit {
           if (cat.posts && (cat.posts.indexOf(id) !== -1) && (categories.indexOf(cat.id) === -1)) {
             // remove post from cat
             cat.posts.splice(cat.posts.indexOf(id), 1);
+            console.log(`remove ${id} from ${cat.id}`);
           } else {
             if (((!cat.posts) || (cat.posts.indexOf(id) === -1)) && (categories.indexOf(cat.id) !== -1)) {
               if (!cat.posts) {
@@ -235,9 +236,15 @@ export class CreatePostPageComponent implements OnInit {
   }
 
   moveToTrash() {
-    var obs$ = this.data.remove('posts', this.postForm.controls.id.value).subscribe(_ => {
+    const postId = this.postForm.controls.id.value;
+    var obs$ = this.data.remove('posts', postId).subscribe(_ => {
       obs$.unsubscribe();
-      this.router.navigate(['/user/posts']);
+
+      this.catSyncing = this.syncPostToCategories([], postId);
+      var cat$ = this.catSyncing.subscribe(_ => {
+        cat$.unsubscribe();
+        this.router.navigate(['/user/posts']);
+      });
     });
   }
 }
