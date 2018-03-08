@@ -70,7 +70,7 @@ export class EditCategoryPageComponent implements OnInit {
     });
   }
 
-  save(status: string) {
+  save() {
     const loadingModalOptions = {
       initialState: {
         message: 'กำลังบันทึก'
