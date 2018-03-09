@@ -64,6 +64,7 @@ export class EditCategoryPageComponent implements OnInit {
     this.categoryForm = this.fb.group({
       id: '',
       title: '',
+      posts: [],
       created_timestamp: '',
       updated_timestamp: '',
       creator: this.auth.currentUser()
