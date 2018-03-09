@@ -31,6 +31,7 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 import { CreatePostPageComponent } from './components/create-post-page/create-post-page.component';
 import { QuillModule } from 'ngx-quill';
 import { DataService } from './services/data.service';
+import { DataSyncService } from './services/data-sync.service';
 import { DashIfEmptyPipe } from './pipes/dash-if-empty.pipe';
 import { SuccessAlertComponent } from './components/success-alert/success-alert.component';
 import { LoadingModalComponent } from './components/loading-modal/loading-modal.component';
@@ -48,6 +49,7 @@ import { CategoryCollapsibleFormComponent } from './components/category-collapsi
 import { TagsAdderComponent } from './components/tags-adder/tags-adder.component';
 import { CreateLoginComponent } from './components/create-login/create-login.component';
 import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
+import { LoadingModalService } from './services/loading-modal.service';
 
 @NgModule({
   declarations: [
@@ -107,7 +109,9 @@ import { EditCategoryPageComponent } from './components/edit-category-page/edit-
   ],
   providers: [
     AuthService,
-    DataService
+    DataService,
+    DataSyncService,
+    LoadingModalService
   ],
   bootstrap: [AppComponent]
 })

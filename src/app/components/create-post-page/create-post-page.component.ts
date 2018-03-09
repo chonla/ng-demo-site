@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment';
 import 'rxjs/add/observable/forkJoin';
 import { LoadingModalComponent } from '../loading-modal/loading-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { DataSyncService } from '../../services/data-sync.service';
 
 @Component({
   selector: 'app-create-post-page',
@@ -18,8 +19,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 export class CreatePostPageComponent implements OnInit {
 
   @ViewChild('successAlert') successAlert;
-  // @ViewChild('loadingModal') loadingModal;
-  // @ViewChild('savingModal') savingModal;
   @ViewChild('categoryForm') categoryForm;
   @ViewChild('confirmModal') confirmModal;
 
@@ -38,6 +37,7 @@ export class CreatePostPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private data: DataService,
+    private dataSync: DataSyncService,
     private auth: AuthService,
     private route: ActivatedRoute,
     private changeDetector: ChangeDetectorRef,
@@ -146,66 +146,11 @@ export class CreatePostPageComponent implements OnInit {
   }
 
   syncPostToTags(tagList, id): Observable<any> {
-    var syncObservable = Observable.create(observer => {
-      var tag$ = this.data.get('tags').subscribe(tags => {
-        tag$.unsubscribe();
-        if (tags !== []) {
-          tags.forEach(tag => {
-            if (tag.posts && (tag.posts.indexOf(id) !== -1) && (tagList.indexOf(tag.title) === -1)) {
-              // remove post from tag
-              console.log('remove post from tag');
-            } else {
-              if (((!tag.posts) || (tag.posts.indexOf(id) === -1)) && (tagList.indexOf(tag.title) !== -1)) {
-                if (!tag.posts) {
-                  tag.posts = [];
-                }
-                // add post to tag
-                console.log('add post to tag');
-              }
-            }
-          });
-        } else {
-          tagList.forEach(tag => {
-            this.data.save('tags', {
-              "title": tag,
-              "posts": [id]
-            });
-          });
-          console.log('add post to all tags');
-        }
-        observer.next(true);
-        observer.complete();
-      });
-    });
-    return syncObservable;
+    return this.dataSync.sync('tags', tagList, 'posts', id);
   }
 
   syncPostToCategories(categories, id): Observable<any> {
-    var syncObservable = Observable.create(observer => {
-      var cat$ = this.data.get('categories').subscribe(cats => {
-        cat$.unsubscribe();
-        cats.forEach(cat => {
-          if (cat.posts && (cat.posts.indexOf(id) !== -1) && (categories.indexOf(cat.id) === -1)) {
-            // remove post from cat
-            cat.posts.splice(cat.posts.indexOf(id), 1);
-            console.log(`remove ${id} from ${cat.id}`);
-          } else {
-            if (((!cat.posts) || (cat.posts.indexOf(id) === -1)) && (categories.indexOf(cat.id) !== -1)) {
-              if (!cat.posts) {
-                cat.posts = [];
-              }
-              // add post to cat
-              cat.posts.push(id);
-            }
-          }
-          this.data.save('categories', cat);
-        });
-        observer.next(true);
-        observer.complete();
-      });
-    });
-
-    return syncObservable;
+    return this.dataSync.sync('categories', categories, 'posts', id);
   }
 
   autoCreateSlug() {

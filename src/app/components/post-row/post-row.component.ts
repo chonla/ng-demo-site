@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
+import { DataSyncService } from '../../services/data-sync.service';
+import { LoadingModalService } from '../../services/loading-modal.service';
 
 @Component({
   selector: 'app-post-row',
@@ -13,7 +15,12 @@ export class PostRowComponent implements OnInit {
   @Input() post;
   @ViewChild('confirmModal') confirmModal;
 
-  constructor(private router: Router, private data: DataService) { }
+  constructor(
+    private router: Router,
+    private data: DataService,
+    private dataSync: DataSyncService,
+    private loading: LoadingModalService
+  ) { }
 
   ngOnInit() {
     this.menuOff = true;
@@ -42,10 +49,16 @@ export class PostRowComponent implements OnInit {
   }
 
   moveToTrash() {
-    var obs$ = this.data.remove('posts', this.post.id).subscribe(_ => {
-      obs$.unsubscribe();
+    var postId = this.post.id;
+    var loading$ = this.loading.show('กำลังย้ายไปถังขยะ').subscribe(_ => {
+      var obs$ = this.data.remove('posts', postId).subscribe(_ => {
+        obs$.unsubscribe();
+        var syncing$ = this.dataSync.sync('categories', [], 'posts', postId).subscribe(_ => {
+          loading$.unsubscribe();
+          syncing$.unsubscribe();
+          this.loading.hide();
+        });
+      });
     });
   }
-
-
 }
