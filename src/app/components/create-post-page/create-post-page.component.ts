@@ -146,6 +146,7 @@ export class CreatePostPageComponent implements OnInit {
   }
 
   syncPostToTags(tagList, id): Observable<any> {
+    console.log(tagList);
     return this.dataSync.sync('tags', tagList, 'posts', id);
   }
 

@@ -9,5 +9,5 @@ export const environment = {
   authen: {
     persistence: 'session'
   },
-  slugBase: 'http://demo.m150.me/'
+  slugBase: 'http://www.m150.me/#/read/'
 };

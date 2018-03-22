@@ -14,5 +14,5 @@ export const environment = {
   authen: {
     persistence: 'session'
   },
-  slugBase: 'http://localhost/'
+  slugBase: 'http://localhost/#/read/'
 };
