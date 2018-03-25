@@ -41,3 +41,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Robot framework
+robot/*.png
+robot/log.html
+robot/output.xml
+robot/report.html
