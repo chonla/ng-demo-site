@@ -11,6 +11,9 @@
 จะต้องแสดงหน้าแดชบอร์ด
     Wait Until Element Is Visible    page-dashboard
 
+จะต้องแสดงหน้าจอสร้างล็อกอินใหม่
+    Wait Until Element Is Visible    modal-registration
+
 ล็อกอินด้วย
     [Arguments]    ${username}    ${password}
     Input Text    input-username    ${username}
@@ -21,3 +24,7 @@
     [Arguments]    ${message}
     Wait Until Element Is Visible    modal-error
     Element Should Contain    modal-error    ${message}
+
+คลิกปุ่มสร้างล็อกอินใหม่
+    Click Element    button-registration
+
