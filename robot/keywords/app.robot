@@ -26,5 +26,5 @@
     Element Should Contain    modal-error    ${message}
 
 คลิกปุ่มสร้างล็อกอินใหม่
-    Click Element    button-registration
+    Click Element    button-register
 
