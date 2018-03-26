@@ -5,3 +5,5 @@ ${VALID_USERNAME}    demouser@m150.me
 ${VALID_PASSWORD}    demopassword
 ${INVALID_USERNAME}    wrongusername
 ${INVALID_PASSWORD}    wrongpassword
+${NEW_USERNAME}    newuser@m150.me
+${NEW_PASSWORD}    newpassword

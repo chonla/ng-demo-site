@@ -3,7 +3,7 @@
     Open Browser    ${APP_URL}    ${BROWSER}
 
 ปิดแอพ
-    Close Browser
+    Close All Browsers
 
 จะต้องแสดงหน้าล็อกอิน
     Wait Until Element Is Visible    page-login
@@ -28,3 +28,17 @@
 คลิกปุ่มสร้างล็อกอินใหม่
     Click Element    button-register
 
+กรอก username ใหม่ด้วย
+    [Arguments]    ${username}
+    Input Text    input-new-username    ${username}
+
+กรอก password ใหม่ด้วย
+    [Arguments]    ${password}
+    Input Password    input-new-password    ${password}
+
+ยืนยัน password ใหม่ด้วย
+    [Arguments]    ${password}
+    Input Password    input-confirm-password    ${password}
+
+กดปุ่มสร้างล็อกอิน
+    Click Element    button-confirm-create-user
