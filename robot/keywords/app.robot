@@ -25,6 +25,11 @@
     Wait Until Element Is Visible    modal-error
     Element Should Contain    modal-error    ${message}
 
+จะต้องแสดงข้อความผลลัพธ์
+    [Arguments]    ${message}
+    Wait Until Element Is Visible    modal-success
+    Element Should Contain    modal-success    ${message}
+
 คลิกปุ่มสร้างล็อกอินใหม่
     Click Element    button-register
 
@@ -42,3 +47,6 @@
 
 กดปุ่มสร้างล็อกอิน
     Click Element    button-confirm-create-user
+
+ปิดหน้าจอสร้างล็อกอิน
+    Click Element    button-cancel-create-user
