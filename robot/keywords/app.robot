@@ -52,12 +52,12 @@
     Click Element    button-confirm-create-user
 
 ปิดหน้าจอสร้างล็อกอิน
-    Click Element    button-cancel-create-user
+    Press Key    tag=body    \\27
+    Wait Until Element Is Not Visible    modal-registration
 
 รอจนกว่าสร้างล็อกอินสำเร็จ
     Wait Until Element Is Visible    modal-success
     Wait Until Element Is Not Visible    modal-loading
-    Sleep    0.5s
 
 ล้างล็อกอิน
     Send Request To    http://api:195376cebcd1e0517d0067b2354555a7@jenkins.m150.me/job/sweet-singer-remove-user/build?token=TESTTEARDOWN
