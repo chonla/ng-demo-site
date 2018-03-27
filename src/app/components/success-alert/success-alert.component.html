@@ -1,8 +1,7 @@
-<div class="row" *ngIf="shown">
-  <div class="alert alert-success alert-dismissible fade show col-12" role="alert" #alertBox>
-    <button type="button" class="close" aria-label="Close" (click)="hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <strong>{{ title }}</strong> {{ message }}
-  </div>
+<div *ngIf="showed" @fadeAnimated id="modal-error" class="alert alert-success alert-dismissible fade show" role="alert">
+
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>{{ title }}</strong> {{ message }}
 </div>

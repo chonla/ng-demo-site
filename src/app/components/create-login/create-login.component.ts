@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { ErrorAlertComponent } from '../error-alert/error-alert.component';
 import { LoadingModalComponent } from '../loading-modal/loading-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { SuccessAlertComponent } from '../success-alert/success-alert.component';
 
 @Component({
   selector: 'app-create-login',
@@ -14,7 +15,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 export class CreateLoginComponent {
   @ViewChild('createLoginModal') createLoginModal: TemplateRef<any>;
   @ViewChild('loadingModal') loadingModal: LoadingModalComponent;
-  @ViewChild('errorModal') error: ErrorAlertComponent;
+  @ViewChild('errorAlert') error: ErrorAlertComponent;
+  @ViewChild('successAlert') success: SuccessAlertComponent;
   public modalRef: BsModalRef;
   private dataEmitter: EventEmitter<boolean>;
   public registerForm: FormGroup;
@@ -73,8 +75,9 @@ export class CreateLoginComponent {
     this.auth.create(formModel)
       .then(_ => {
         loadingModalRef.hide();
-        this.bsModalRef.hide();
+        this.registerForm.reset();
         this.dataEmitter.emit(true);
+        this.success.show('สร้างล็อกอินสำเร็จ', 'คุณสามารถใช้ล็อกอินนี้เพื่อเข้าสู่ระบบได้เลย');
       })
       .catch(e => {
         loadingModalRef.hide();

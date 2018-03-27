@@ -16,11 +16,12 @@
         <label for="newCconfirmedPassword">ยืนยันรหัสผ่าน</label>
         <input type="password" class="form-control" id="input-confirm-password" formControlName="confirmedPassword" placeholder="ยืนยันรหัสผ่าน">
       </div>
-      <app-error-alert #errorModal></app-error-alert>
+      <app-error-alert #errorAlert></app-error-alert>
+      <app-success-alert #successAlert></app-success-alert>
     </div>
     <div class="modal-footer">
       <button id="button-confirm-create-user" type="button" class="btn btn-primary mr-3" (click)="confirm()">สร้างล็อกอิน</button>
-      <button id="button-cancel-create-user" type="button" class="btn btn-default" (click)="decline()">ยกเลิก</button>
+      <button id="button-cancel-create-user" type="button" class="btn btn-default" (click)="decline()">ปิด</button>
     </div>
   </form>
 </div>
