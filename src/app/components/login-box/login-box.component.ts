@@ -63,7 +63,7 @@ export class LoginBoxComponent implements OnInit {
     const createLoginModalOptions = {
       animated: true,
       backdrop: true,
-      keyboard: false,
+      keyboard: true,
       focus: true,
       ignoreBackdropClick: true
     };
