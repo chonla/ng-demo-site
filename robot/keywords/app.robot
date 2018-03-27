@@ -14,6 +14,9 @@
 จะต้องแสดงหน้าจอสร้างล็อกอินใหม่
     Wait Until Element Is Visible    modal-registration
 
+จะต้องไม่แสดงหน้าจอสร้างล็อกอินใหม่
+    Wait Until Element Is Not Visible    modal-registration
+
 ล็อกอินด้วย
     [Arguments]    ${username}    ${password}
     Input Text    input-username    ${username}
@@ -50,3 +53,10 @@
 
 ปิดหน้าจอสร้างล็อกอิน
     Click Element    button-cancel-create-user
+
+รอจนกว่าสร้างล็อกอินสำเร็จ
+    Wait Until Element Is Visible    modal-success
+    Wait Until Element Is Not Visible    modal-loading
+
+ล้างล็อกอิน
+    Send Request To    http://api:195376cebcd1e0517d0067b2354555a7@jenkins.m150.me/job/sweet-singer-remove-user/build?token=TESTTEARDOWN
