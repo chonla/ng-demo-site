@@ -62,11 +62,17 @@
     Wait Until Element Is Visible    modal-success
     Wait Until Element Is Not Visible    modal-loading
 
+รอจนกว่าจะล็อกอินเสร็จ
+    Wait Until Element Is Visible    page-dashboard
+
+ล็อกเอาท์
+    Click Element    menu-logout
+
 ลบล็อกอิน
     [Arguments]    ${username}    ${password}
     ไปหน้าล็อกอิน
     ล็อกอินด้วย    ${username}    ${password}
-    Wait Until Element Is Visible    page-dashboard
+    รอจนกว่าจะล็อกอินเสร็จ
     Click Element    menu-leave
     Click Element    button-confirm-leave
     จะต้องแสดงหน้าล็อกอิน
