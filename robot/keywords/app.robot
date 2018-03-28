@@ -5,6 +5,9 @@
 ปิดแอพ
     Close All Browsers
 
+ไปหน้าล็อกอิน
+    Go To    ${APP_BASE_URL}/#/login
+
 จะต้องแสดงหน้าล็อกอิน
     Wait Until Element Is Visible    page-login
 
@@ -59,5 +62,10 @@
     Wait Until Element Is Visible    modal-success
     Wait Until Element Is Not Visible    modal-loading
 
-ล้างล็อกอิน
-    Send Request To    http://api:195376cebcd1e0517d0067b2354555a7@jenkins.m150.me/job/sweet-singer-remove-user/build?token=TESTTEARDOWN
+ลบล็อกอิน
+    [Arguments]    ${username}    ${password}
+    ไปหน้าล็อกอิน
+    ล็อกอินด้วย    ${username}    ${password}
+    Click Element    menu-leave
+    Click Element    button-confirm-leave
+    จะต้องแสดงหน้าล็อกอิน

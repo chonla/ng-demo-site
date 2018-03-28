@@ -1,5 +1,6 @@
 *** Variables ***
 ${APP_URL}    http://admin.m150.me
+${APP_BASE_URL}    http://admin.m150.me
 ${BROWSER}    gc
 ${VALID_USERNAME}    demouser@m150.me
 ${VALID_PASSWORD}    demopassword
