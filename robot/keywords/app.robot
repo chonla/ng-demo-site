@@ -55,7 +55,8 @@
     Click Element    button-confirm-create-user
 
 ปิดหน้าจอสร้างล็อกอิน
-    Press Key    modal-registration    \\27
+    Wait Until Element Is Visible    button-x-cancel-create-user
+    Click Element    button-x-cancel-create-user
     Wait Until Element Is Not Visible    modal-registration
 
 รอจนกว่าสร้างล็อกอินสำเร็จ
