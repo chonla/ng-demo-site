@@ -66,6 +66,7 @@
     [Arguments]    ${username}    ${password}
     ไปหน้าล็อกอิน
     ล็อกอินด้วย    ${username}    ${password}
+    Wait Until Element Is Visible    page-dashboard
     Click Element    menu-leave
     Click Element    button-confirm-leave
     จะต้องแสดงหน้าล็อกอิน
