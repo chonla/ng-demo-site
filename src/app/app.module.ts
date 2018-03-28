@@ -50,6 +50,7 @@ import { TagsAdderComponent } from './components/tags-adder/tags-adder.component
 import { CreateLoginComponent } from './components/create-login/create-login.component';
 import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
 import { LoadingModalService } from './services/loading-modal.service';
+import { LeavePageComponent } from './components/leave-page/leave-page.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { LoadingModalService } from './services/loading-modal.service';
     CategoryCollapsibleFormComponent,
     TagsAdderComponent,
     CreateLoginComponent,
-    EditCategoryPageComponent
+    EditCategoryPageComponent,
+    LeavePageComponent
   ],
   imports: [
     BrowserModule,

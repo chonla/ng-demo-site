@@ -10,6 +10,7 @@ import { PostsPageComponent } from './components/posts-page/posts-page.component
 import { CreatePostPageComponent } from './components/create-post-page/create-post-page.component';
 import { CategoryPageComponent } from './components/category-page/category-page.component';
 import { EditCategoryPageComponent } from './components/edit-category-page/edit-category-page.component';
+import { LeavePageComponent } from './components/leave-page/leave-page.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,11 @@ const routes: Routes = [
       {
         path: 'edit-category',
         component: EditCategoryPageComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'leave',
+        component: LeavePageComponent,
         canActivate: [AuthGuardService]
       }
     ]

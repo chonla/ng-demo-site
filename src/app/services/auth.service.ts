@@ -45,4 +45,8 @@ export class AuthService {
     return this.fireauth.auth.signOut();
   }
 
+  leave(): Promise<any> {
+    return this.fireauth.auth.currentUser.delete();
+  }
+
 }
