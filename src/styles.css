@@ -120,3 +120,12 @@ body {
 .bootstrap tag {
   background-color: #005B87 !important;
 }
+
+.fa-15 {
+  font-size: 1.5em;
+}
+
+button.close {
+  border: none;
+  background-color: transparent;
+}

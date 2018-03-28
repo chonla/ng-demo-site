@@ -1,6 +1,11 @@
 <div id="modal-registration" class="modal-content">
   <div class="modal-header">
     <h4 class="modal-title pull-left">สร้างล็อกอินใหม่</h4>
+    <button aria-label="Close" id="button-x-cancel-create-user" class="close pull-right" type="button" (click)="decline()">
+      <span aria-hidden="true">
+        <i class="fa fw fa-times fa-2"></i>
+      </span>
+    </button>
   </div>
   <form [formGroup]="registerForm">
     <div class="modal-body text-left">

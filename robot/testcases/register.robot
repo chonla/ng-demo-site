@@ -26,6 +26,7 @@ Test Teardown    ปิดแอพ
     [Teardown]    ลบล็อกอินและปิดแอพ
 
 ล็อกอินด้วยล็อกอินใหม่
+    [Tags]    tt
     คลิกปุ่มสร้างล็อกอินใหม่
     กรอก username ใหม่ด้วย    ${NEW_USERNAME}
     กรอก password ใหม่ด้วย    ${NEW_PASSWORD}

@@ -55,7 +55,7 @@
     Click Element    button-confirm-create-user
 
 ปิดหน้าจอสร้างล็อกอิน
-    Press Key    tag=body    \\27
+    Press Key    modal-registration    \\27
     Wait Until Element Is Not Visible    modal-registration
 
 รอจนกว่าสร้างล็อกอินสำเร็จ
