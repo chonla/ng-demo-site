@@ -14,6 +14,9 @@ ${NEW_POST_BODY}    เนื้อหาทดสอบบทความอั
     ใส่ลิงก์มายังบทความเป็น    ${NEW_POST_SLUG}
     ใส่เนื้อหาในบทความเป็น    ${NEW_POST_BODY}
     คลิกปุ่มเผยแพร่บทความ
+    จะต้องแสดงข้อความผลลัพธ์    บทความใหม่ของคุณถูกบันทึกไว้เรียบร้อยแล้ว
+    ไปหน้าบทความ
+    จะต้องมีบทความใหม่แสดง    ${NEW_POST_TITLE}
 
 *** Keywords ***
 ล็อกอินแล้วไปหน้าสร้างบทความ
@@ -28,12 +31,29 @@ ${NEW_POST_BODY}    เนื้อหาทดสอบบทความอั
 
 ใส่ชื่อบทความใหม่เป็น
     [Arguments]    ${title}
-    Input Text    new-post-title    ${title}
+    Input Text    input-new-post-title    ${title}
 
 ใส่ลิงก์มายังบทความเป็น
     [Arguments]    ${slug}
-    Input Text    new-post-slug    ${slug}
+    Input Text    input-new-post-slug    ${slug}
 
 ใส่เนื้อหาในบทความเป็น
     [Arguments]    ${body}
-    Input Wysiwyg Text    new-post-body    ${body}
+    Input Wysiwyg Text    wgsiwyg-new-post-body    ${body}
+
+จะต้องมีบทความใหม่แสดง
+    [Arguments]    ${title}
+    Table Column Should Contain    posts-list    2    ${title}
+
+Table Column Should Contain
+    [Arguments]    ${locator}    ${column_index}    ${text}
+    Execute Javascript
+    ...    (function() {
+    ...        var column = $('#${locator} tbody tr td:nth-child(${column_index})');
+    ...        for (var i = 0; i < column.length; i++) {
+    ...            if (column[i].text().indexOf('${text}') >= 0) {
+    ...                return true;
+    ...            }
+    ...        }
+    ...        return false;
+    ...    })();

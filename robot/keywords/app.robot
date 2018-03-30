@@ -12,7 +12,7 @@
     Click Element    menu-post
 
 คลิกปุ่มเผยแพร่บทความ
-    Click Element    button-publish-post
+    Click Element    button-publish-new-post
 
 จะต้องแสดงหน้าล็อกอิน
     Wait Until Element Is Visible    page-login
