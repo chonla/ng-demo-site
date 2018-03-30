@@ -67,10 +67,13 @@
 
 รอจนกว่าสร้างล็อกอินสำเร็จ
     Wait Until Element Is Visible    modal-success
-    Wait Until Element Is Not Visible    modal-loading
+    Wait Until Page Does Not Contain Element    modal-loading
 
 รอจนกว่าจะล็อกอินเสร็จ
     Wait Until Element Is Visible    page-dashboard
+
+รอจนกว่าจะบันทึกบทความเสร็จ
+    Wait Until Page Does Not Contain Element    modal-loading
 
 ล็อกเอาท์
     Click Element    menu-logout
