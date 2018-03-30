@@ -7,18 +7,20 @@
     <div class="row">
       <div class="col-9">
         <div class="row">
-          <input type="text" class="form-control form-control-lg" formControlName="title" placeholder="ใส่ชื่อหัวข้อที่นี่" (blur)="autoCreateSlug()">
+          <input id="new-post-title" type="text" class="form-control form-control-lg" formControlName="title" placeholder="ใส่ชื่อหัวข้อที่นี่"
+            (blur)="autoCreateSlug()">
         </div>
         <div class="row">
           <div class="input-group mb-1 mt-1">
             <div class="input-group-prepend">
               <div class="input-group-text">{{ env.slugBase }}</div>
             </div>
-            <input type="text" class="form-control" formControlName="slug" placeholder="ใส่คีย์สำหรับ URL ที่นี่" (blur)="autoCreateSlug()">
+            <input id="new-post-slug" type="text" class="form-control" formControlName="slug" placeholder="ใส่คีย์สำหรับ URL ที่นี่"
+              (blur)="autoCreateSlug()">
           </div>
         </div>
         <div class="row mt-2 text-editor-container">
-          <quill-editor [placeholder]="'ใส่ข้อความที่นี่'" formControlName="body"></quill-editor>
+          <quill-editor id="new-post-body" [placeholder]="'ใส่ข้อความที่นี่'" formControlName="body"></quill-editor>
         </div>
         <div class="row mt-2" *ngIf="postForm.controls['id'].value !== ''">
           <div class="col-12 pr-0 pl-0">
@@ -41,10 +43,10 @@
             <label>บันทึกเมื่อ:</label> {{ postForm.controls['updated_timestamp'].value | thDate: 'd MMM tttt' | dashIfEmpty }}
           </div>
           <div class="card-footer">
-            <button class="btn btn-secondary" type="submit" (click)="saveDraft()" [disabled]="isSaving">
+            <button id="draft-new-post" class="btn btn-secondary" type="submit" (click)="saveDraft()" [disabled]="isSaving">
               <i class="fa fa-pencil fw"></i> ร่าง
             </button>
-            <button class="btn btn-primary float-right" type="submit" (click)="publishPost()" [disabled]="isSaving">
+            <button id="publish-new-post" class="btn btn-primary float-right" type="submit" (click)="publishPost()" [disabled]="isSaving">
               <i class="fa fa-cloud fw"></i> เผยแพร่
             </button>
           </div>

@@ -1,7 +1,5 @@
 *** Settings ***
 Resource    ../settings/all.robot
-Resource    ../keywords/app.robot
-Resource    ../variables/global.robot
 Test Setup    เปิดแอพ
 Test Teardown    ปิดแอพ
 

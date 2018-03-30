@@ -1,4 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    requests
-Resource    ../keywords/rest.robot
+Resource    ../keywords/app.robot
+Resource    ../variables/global.robot
+Resource    ../keywords/wysiwyg.robot

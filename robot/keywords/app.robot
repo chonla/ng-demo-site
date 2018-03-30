@@ -8,6 +8,9 @@
 ไปหน้าล็อกอิน
     Go To    ${APP_BASE_URL}/#/login
 
+คลิกเมนูบทความ
+    Click Element    menu-post
+
 จะต้องแสดงหน้าล็อกอิน
     Wait Until Element Is Visible    page-login
 
