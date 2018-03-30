@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../settings/all.robot
-Suite Setup    ล็อกอินแล้วไปหน้าสร้างโพสต์
+Suite Setup    ล็อกอินแล้วไปหน้าสร้างบทความ
 Suite Teardown    ปิดแอพ
 
 *** Variables ***
@@ -13,7 +13,7 @@ ${NEW_POST_BODY}    เนื้อหาทดสอบบทความอั
     ใส่ชื่อบทความใหม่เป็น    ${NEW_POST_TITLE}
     ใส่ลิงก์มายังบทความเป็น    ${NEW_POST_SLUG}
     ใส่เนื้อหาในบทความเป็น    ${NEW_POST_BODY}
-    บันทึกบทความ
+    คลิกปุ่มเผยแพร่บทความ
 
 *** Keywords ***
 ล็อกอินแล้วไปหน้าสร้างบทความ
