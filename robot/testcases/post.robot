@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    ../settings/all.robot
 Suite Setup    ล็อกอินแล้วไปหน้าสร้างบทความ
-Suite Teardown    ปิดแอพ
+# Suite Teardown    ปิดแอพ
 
 *** Variables ***
 ${NEW_POST_TITLE}    บทความใหม่จากระบบทดสอบอัตโนมัติ
@@ -48,13 +48,14 @@ ${NEW_POST_BODY}    เนื้อหาทดสอบบทความอั
 
 Table Column Should Contain
     [Arguments]    ${locator}    ${column_index}    ${text}
-    Execute Javascript
-    ...    (function() {
-    ...        var column = $('#${locator} tbody tr td:nth-child(${column_index})');
+    ${found}=    Execute Javascript
+    ...    return (function() {
+    ...        var column = $('#${locator} tbody tr td:nth-child(${column_index}) .post-title');
     ...        for (var i = 0; i < column.length; i++) {
-    ...            if (column[i].text().indexOf('${text}') >= 0) {
+    ...            if ($(column[i]).text().indexOf('${text}') >= 0) {
     ...                return true;
     ...            }
     ...        }
     ...        return false;
     ...    })();
+    Should Be Equal    True    ${found}    Table column should contain text, but not
