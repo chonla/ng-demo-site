@@ -23,6 +23,9 @@
 จะต้องแสดงหน้าจอสร้างล็อกอินใหม่
     Wait Until Element Is Visible    modal-registration
 
+จะต้องแสดงหน้าบทความ
+    Wait Until Element Is Visible    posts-list
+
 จะต้องไม่แสดงหน้าจอสร้างล็อกอินใหม่
     Wait Until Element Is Not Visible    modal-registration
 
