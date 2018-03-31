@@ -53,7 +53,7 @@ ${NEW_POST_BODY}    เนื้อหาทดสอบบทความอั
 
 ลบบทความ
     [Arguments]    ${title}
-    ${index}=    Find Element Index Containing Exact Text    ${title}
-    Mouse Over    css:.post-title:nth-child(${index + 1})
+    ${index}=    Find Element Index Containing Exact Text    css:.post-title    ${title}
+    Mouse Over    css:#posts-list tbody tr:nth-child(${index + 1})
     Click Element    css:.menu-remove-post
     Click Element    button-confirm-modal-ok
