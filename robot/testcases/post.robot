@@ -1,7 +1,7 @@
 *** Settings ***
 Resource    ../settings/all.robot
 Suite Setup    ล็อกอินแล้วไปหน้าสร้างบทความ
-# Suite Teardown    ปิดแอพ
+Suite Teardown    ปิดแอพ
 
 *** Variables ***
 ${NEW_POST_TITLE}    บทความใหม่จากระบบทดสอบอัตโนมัติ
@@ -18,6 +18,7 @@ ${NEW_POST_BODY}    เนื้อหาทดสอบบทความอั
     จะต้องแสดงข้อความผลลัพธ์    บทความใหม่ของคุณถูกบันทึกไว้เรียบร้อยแล้ว
     คลิกเมนูบทความ
     จะต้องมีบทความใหม่แสดง    ${NEW_POST_TITLE}
+    [Teardown]    ลบบทความ    ${NEW_POST_TITLE}
 
 *** Keywords ***
 ล็อกอินแล้วไปหน้าสร้างบทความ
@@ -44,18 +45,15 @@ ${NEW_POST_BODY}    เนื้อหาทดสอบบทความอั
 
 จะต้องมีบทความใหม่แสดง
     [Arguments]    ${title}
-    Table Column Should Contain    posts-list    2    ${title}
+    รอจนกว่าจะแสดงรายชื่อบทความเสร็จ
+    Web Element Should Exactly Contain    css:.post-title    ${title}
 
-Table Column Should Contain
-    [Arguments]    ${locator}    ${column_index}    ${text}
-    ${found}=    Execute Javascript
-    ...    return (function() {
-    ...        var column = $('#${locator} tbody tr td:nth-child(${column_index}) .post-title');
-    ...        for (var i = 0; i < column.length; i++) {
-    ...            if ($(column[i]).text().indexOf('${text}') >= 0) {
-    ...                return true;
-    ...            }
-    ...        }
-    ...        return false;
-    ...    })();
-    Should Be Equal    True    ${found}    Table column should contain text, but not
+รอจนกว่าจะแสดงรายชื่อบทความเสร็จ
+    Wait Until Page Contains Element    css:.post-title
+
+ลบบทความ
+    [Arguments]    ${title}
+    ${index}=    Find Element Index Containing Exact Text    ${title}
+    Mouse Over    css:.post-title:nth-child(${index + 1})
+    Click Element    css:.menu-remove-post
+    Click Element    button-confirm-modal-ok
