@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
+import { from } from 'rxjs';
 
 @Injectable()
 export class DataService {
@@ -23,12 +24,12 @@ export class DataService {
     const docId = this.db.createId();
     const col = this.db.collection(to);
     obj['id'] = docId;
-    return Observable.fromPromise(col.doc(docId).set(obj));
+    return from(col.doc(docId).set(obj));
   }
 
   private update(to, key, obj): Observable<void> {
     const col = this.db.collection(to);
-    return Observable.fromPromise(col.doc(key).set(obj));
+    return from(col.doc(key).set(obj));
   }
 
   public get(from, key?): Observable<any> {
@@ -41,7 +42,7 @@ export class DataService {
 
   public remove(from, key): Observable<void> {
     const col = this.db.collection(from);
-    return Observable.fromPromise(col.doc(key).delete());
+    return from(col.doc(key).delete());
   }
 
 }
