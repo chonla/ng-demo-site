@@ -19,7 +19,7 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "node_modules/font-awesome/fonts"
+              "fonts"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -93,7 +93,7 @@
             "assets": [
               "src/assets",
               "src/favicon.ico",
-              "node_modules/font-awesome/fonts"
+              "src/fonts"
             ]
           }
         },

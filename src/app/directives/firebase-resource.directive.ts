@@ -1,5 +1,5 @@
 import { Directive, Input, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
