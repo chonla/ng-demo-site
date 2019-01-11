@@ -1,12 +1,12 @@
+
+import {forkJoin as observableForkJoin,  Subscription ,  Observable } from 'rxjs';
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
-import { Subscription } from 'rxjs/Subscription';
 import { ParamMap, ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
-import 'rxjs/add/observable/forkJoin';
+
 import { LoadingModalComponent } from '../loading-modal/loading-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { DataSyncService } from '../../services/data-sync.service';
@@ -135,7 +135,7 @@ export class CreatePostPageComponent implements OnInit {
 
       this.catSyncing = this.syncPostToCategories(selectedCategories, post.id);
       this.tagSyncing = this.syncPostToTags(selectedTags, post.id);
-      this.syncing$ = Observable.forkJoin(this.catSyncing, this.tagSyncing)
+      this.syncing$ = observableForkJoin(this.catSyncing, this.tagSyncing)
         .subscribe((r) => {
           this.syncing$.unsubscribe();
           this.successAlert.show('เยี่ยมไปเลย!', 'บทความใหม่ของคุณถูกบันทึกไว้เรียบร้อยแล้ว');

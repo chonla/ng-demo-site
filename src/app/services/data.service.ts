@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs/Observable';
-import { from } from 'rxjs';
+import { Observable ,  from } from 'rxjs';
 
 @Injectable()
 export class DataService {

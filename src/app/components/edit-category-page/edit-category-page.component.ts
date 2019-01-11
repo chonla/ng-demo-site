@@ -5,7 +5,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { LoadingModalComponent } from '../loading-modal/loading-modal.component';
 import { DataService } from '../../services/data.service';
 import { AuthService } from '../../services/auth.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-category-page',

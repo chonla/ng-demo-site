@@ -1,7 +1,6 @@
 import { Directive, Input, Output, OnInit, OnDestroy, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable ,  Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs/Subscription';
 
 @Directive({
   selector: '[appResource]'

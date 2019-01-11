@@ -1,7 +1,6 @@
 import { Directive, Input, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
+import { Subscription ,  Observable } from 'rxjs';
 
 @Directive({
   selector: '[appFirebaseResource]'

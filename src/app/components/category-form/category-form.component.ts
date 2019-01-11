@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
 import * as $ from 'jquery';

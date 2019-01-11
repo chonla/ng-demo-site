@@ -1,5 +1,6 @@
+
+import {forkJoin as observableForkJoin,  Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { DataService } from './data.service';
 
 @Injectable()
@@ -32,7 +33,7 @@ export class DataSyncService {
           }
         });
         if (saveObservableList.length > 0) {
-          Observable.forkJoin(saveObservableList)
+          observableForkJoin(saveObservableList)
             .subscribe(_ => {
               observer.next(true);
               observer.complete();

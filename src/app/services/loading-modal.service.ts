@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { LoadingModalComponent } from '../components/loading-modal/loading-modal.component';
-import { Observer } from 'rxjs/Observer';
-import { Observable } from 'rxjs/Observable';
+import { Observer ,  Observable } from 'rxjs';
 
 @Injectable()
 export class LoadingModalService {
